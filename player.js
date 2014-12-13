@@ -10,7 +10,11 @@ function Player(state) {
   this.state		= state >= 0 ? state : SOLID;
   this.oldState   = -1;
 
-  this.energy = 150;
+  console.log(currentElement);
+  if (currentElement > 0)
+    this.energy = JSON.elements[currentElement-1].maxEnergy;
+  else
+    this.energy = 150;
 
 
   this.init = function() {
@@ -289,7 +293,7 @@ function Player(state) {
   this.earnEnergy = function() {
     this.energy += energyEarned;
     
-    if (this.energy == JSON.elements[currentElement].maxEnergy) 
+    if (this.energy >= JSON.elements[currentElement].maxEnergy)
       nextElementForDemo()
   }
 

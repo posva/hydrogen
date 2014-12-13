@@ -122,7 +122,7 @@
     {
       "id":"hydrogen",
       "i":0,
-      "maxEnergy": 250
+      "maxEnergy": 150
     },
     {
       "id":"azote",
