@@ -21,9 +21,9 @@
         if (!Game.isGameOver) createObstacle();
       }
 
-      if (mancheStep > 20
-          && mancheStep < speed
-        && mancheStep % 10 == 0) {
+      if (mancheStep > 35
+       && mancheStep < speed-10
+       && mancheStep % 10 == 0) {
           if (!Game.isGameOver) createCoin();
         }
 

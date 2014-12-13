@@ -177,7 +177,7 @@ function loadJSON() {
   imgGas.src 		= JSON.states[GAS].sprite;
 
 
-  	for (var i = 0; i <= JSON.elements.length-1; i++) {
+  	for (var i = 1; i <= JSON.elements.length-1; i++) {
  // for (var i = 1; i <= 1; i++) {
     img[i] = new Object();
 
@@ -190,7 +190,7 @@ function loadJSON() {
 
     img[i].obstacles = new Array();
 
-    for (var j = 0; j <= JSON.obstacles.length-1; j++) {
+    for (var j = 1; j <= JSON.obstacles.length-1; j++) {
       img[i].obstacles[j] = newImage("img/"+JSON.elements[i].id+"/"+JSON.obstacles[j].id+".png");
     }
   }
