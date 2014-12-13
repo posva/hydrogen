@@ -50,9 +50,55 @@ function Player(state) {
       }
 
       for (var i = coins.length; i--;) {
-        if (this.isCollidingWithCoin(coins[i])) {
+        var thisCoin = coins[i];
+        if (this.isCollidingWithCoin(thisCoin)) {
           debug("coin");
-          this.earnEnergy();
+          
+          
+          if (thisCoin.isSpecial) {
+        
+            if (thisCoin.isFire) {
+              
+              // 1 azote
+              // 2 cuivre
+              // 3 mercure
+              
+              if (currentElement == 1) {
+                
+                P.goUp();
+                setTimeout(function(){ P.goUp(); },30);
+                
+              }
+              /*
+              if (currentElement == 2) {
+                
+                P.goUp();
+                setTimeout(function(){ P.goUp(); },30);
+                
+              }*/
+          
+            }
+            if (thisCoin.isFreeze) {
+              
+              // 1 azote
+              // 2 cuivre
+              // 3 mercure
+              
+              if (currentElement == 1) {
+                
+                P.goUp();
+                setTimeout(function(){ P.goUp(); },30);
+                
+              }
+            }
+            
+            
+          } 
+          
+          else {
+            this.earnEnergy();
+          }
+          
         }
       }
     }
@@ -190,15 +236,8 @@ function Player(state) {
          && c.hitZoneX+speedX < p.hitZoneX + p.hitZoneW)
        && (c.hitZoneY+speedX + c.hitZoneH > p.hitZoneY
            && c.hitZoneY+speedX < p.hitZoneY + p.hitZoneH)) {
-             /*
-                if (c.allowList.indexOf(p.state) == -1) {
-                return true;
-                } else {
-                return false;
-                }
-                */
 
-             addEffectVIP(new Halo(this.state));
+             if (!coin.isSpecial) addEffectVIP(new Halo(this.state));
 
              coin.remove();
 

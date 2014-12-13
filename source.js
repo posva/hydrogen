@@ -23,27 +23,48 @@ var HEIGHT = $(window).height();
   hammertime.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
   
   hammertime.on('swipedown', function(ev) {
-    P.goDown();
-    console.log('swipe down');
+   if (Game.isGameOver) {
+     Game.newGame();
+   } else { P.goDown(); }
+   
   });
   
-  hammertime.on('panright', function(ev) {
-    BOT = !BOT;
-  });
 
   hammertime.on('swipeup', function(ev) {
+   if (Game.isGameOver) {
+     Game.newGame();
+    } else {
     P.goUp();
+    }
   });
   
   
   hammertime.on('tap', function(ev) {
-   if (ev.center.y >= HEIGHT/2) {
-     P.goDown();
-   }
-   else {P.goUp();
+    
+   if (Game.isGameOver) {
+     Game.newGame();
+    } else {
+      
+     if (ev.center.y >= HEIGHT/2) {
+       P.goDown();
+     }
+     else {
+       P.goUp();
+     }
    }
   });
   
+  
+  
+  var toBotOrNotToBot = new Hammer(document.getElementById('tobotornottobot'), {});
+  
+  
+  
+  toBotOrNotToBot.on('tap', function(ev) {
+    
+   BOT = !BOT;
+   
+  });
 
 });
 
@@ -100,6 +121,8 @@ imgLiquid2Solid = new Image(),
 imgSolid2Liquid = new Image(),
 imgSolid2Gas = new Image(),
 imgGas2Solid = new Image(),
+imgFeu = new Image(),
+imgGlace = new Image(),
 imgFlashEnergy = new Image();
 
 var imgHalo = new Array();
@@ -147,6 +170,9 @@ function loadJSON() {
   imgStar.src 	= 'img/star.png';
   imgBlackScreen.src 	= 'img/blackscreen.png';
   imgFlashEnergy.src 	= 'img/flashenergy.png';
+  
+  imgFeu.src 	 = 'img/boule_feu.png';
+  imgGlace.src = 'img/boule_froid.png';
 
   imgGas.src 		= JSON.states[GAS].sprite;
 

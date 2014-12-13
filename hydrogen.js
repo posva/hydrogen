@@ -173,7 +173,7 @@
     canvasHUD.translate(GAME_W/2, GAME_H/2-10);
     canvasHUD.fillStyle = 'white';
     canvasHUD.textAlign = 'center';
-    canvasHUD.fillText(P.energy+" Joules", 0, 0);
+    canvasHUD.fillText(P.energy+" eV", 0, 0);
     canvasHUD.restore();
     
     

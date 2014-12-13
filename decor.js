@@ -24,7 +24,7 @@ function HUD() {
     canvasHUD.translate(GAME_W-120, 47);
     canvasHUD.fillStyle = 'white';
     canvasHUD.textAlign = 'right';
-    canvasHUD.fillText(P.energy+" Joules", 0, 0);
+    canvasHUD.fillText(P.energy+" eV", 0, 0);
     canvasHUD.restore();
 
     canvasHUD.drawImage(img[currentElement].HUDbackgroundtopright, GAME_W-247, 0);

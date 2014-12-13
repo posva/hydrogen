@@ -13,6 +13,18 @@ function Coin(line) {
   this.rotation;
   this.floatingUp = true;
   this.floatingY = 0;
+  this.isSpecial = Math.random() < .1;
+  
+  if (this.line == 0 || this.line == 1) {
+    this.isFire = (this.isSpecial && Math.random()>.5);
+  }
+  
+  if (this.line == 1 || this.line == 2) {
+    this.isFreeze = (this.isSpecial && Math.random()>.5 && !this.isFire);
+  }
+  
+  if (!this.isFreeze && !this.isFire) this.isSpecial = false;
+  
   var _ = this;
 
   this.init = function() {
@@ -71,7 +83,12 @@ function Coin(line) {
 
     canvasM.save();
     canvasM.translate(_.x + _.w/2, _.y + _.h/2 + _.floatingY - 16);
-    canvasM.drawImage(imgCoin, -_.w/2+3, -_.h/2+3-canvasMy);
+
+    if (this.isSpecial && this.isFire)    canvasM.drawImage(imgFeu, -_.w/2-12, -_.h/2-7-canvasMy);
+    if (this.isSpecial && this.isFreeze)  canvasM.drawImage(imgGlace, -_.w/2-12, -_.h/2-7-canvasMy);
+    if (!this.isSpecial)                  canvasM.drawImage(imgCoin, -_.w/2+3, -_.h/2+3-canvasMy);
+
+
     canvasM.restore();
 
 
