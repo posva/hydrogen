@@ -1,3 +1,4 @@
+var coinPool = [];
 function Coin(line) {
   this.line 	= line;
   this.w;
@@ -89,9 +90,15 @@ function Coin(line) {
 }
 
 function createCoin() {
-  var state = P.state;
-  var r = Math.floor(Math.random()*3);
+  var state = P.state, r;
+  if (coinPool.length === 0) {
+    r = Math.floor(Math.random()*3);
+    coinPool.push(r);
+    coinPool.push(r);
+    coinPool.push(r);
+  }
 
+  r = coinPool.pop();
   var coin = new Coin(r);
   coin.init();
   coins.push(coin);
