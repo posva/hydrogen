@@ -97,6 +97,12 @@ function Halo(state) {
     canvasF.globalAlpha = 1-(this.time/this.maxTime);
     canvasF.drawImage(imgFlashEnergy,640,10);
     canvasF.restore();
+    
+
+    canvasF.save();
+    canvasF.globalAlpha = 1-(this.time/this.maxTime);
+    canvasF.drawImage(imgFlashBar, (GAME_W - 32 - 220) * Math.min(1, HUD.currentEnergy / JSON.elements[currentElement].maxEnergy)-20, -12);
+    canvasF.restore();
 
 
     if (this.time >= this.maxTime) this.remove();

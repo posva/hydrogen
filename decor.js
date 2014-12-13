@@ -43,10 +43,8 @@ function HUD() {
     }
     canvasHUD.fillStyle="white";
     canvasHUD.fillRect(32, 34, (GAME_W - 32 - 220) * Math.min(1, this.currentEnergy / JSON.elements[currentElement].maxEnergy), 12);
-    canvasHUD.beginPath();
-    canvasHUD.lineWidth="2";
-    canvasHUD.strokeStyle="white";
-    canvasHUD.rect(32, 34, GAME_W - 32 - 220, 12);
+    canvasHUD.fillStyle="rgba(255,255,255,.3)";
+    canvasHUD.fillRect(32, 34, GAME_W - 32 - 220, 12);
     canvasHUD.stroke();
   }
 }

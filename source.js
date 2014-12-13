@@ -127,6 +127,7 @@ imgGotoUp = new Image(),
 imgGotoDown = new Image(),
 imgFreezeScreen = new Image(),
 imgFireScreen = new Image(),
+imgFlashBar = new Image(),
 imgFlashEnergy = new Image();
 
 var imgHalo = new Array();
@@ -174,6 +175,7 @@ function loadJSON() {
   imgStar.src 	= 'img/star.png';
   imgBlackScreen.src 	= 'img/blackscreen.png';
   imgFlashEnergy.src 	= 'img/flashenergy.png';
+  imgFlashBar.src = 'img/flashbar.png';
   
   imgFeu.src 	 = 'img/boule_feu.png';
   imgGlace.src = 'img/boule_froid.png';
@@ -275,4 +277,21 @@ function newImage(src) {
   var image = new Image();
   image.src = src;
   return image;
+}
+
+function nextElementForDemo() {
+  
+    currentElement++;
+    
+    if (currentElement == 4) currentElement = 1;
+    
+    if (currentElement == 1) $('html, body').css('background-image','url(img/pattern_azote.png)');
+    if (currentElement == 2) $('html, body').css('background-image','url(img/pattern_cuivre.png)');
+    if (currentElement == 3) $('html, body').css('background-image','url(img/pattern_mercure.png)');
+    
+    decorBackground 		= new ImgLoop(canvasB, img[currentElement].decorBackground, 0, -10, -1, 0);
+    decorBackgroundFront 	= new ImgLoop(canvasB, img[currentElement].decorBackgroundFront, 0, 205, -10, 0);
+    nuage 					= new ImgLoop(canvasM, img[currentElement].nuage, 0, -10, -7, 0);
+    front 					= new ImgLoop(canvasF, img[currentElement].front, 0, 335, -10, 0);
+
 }

@@ -102,7 +102,7 @@ function Player(state) {
               
               if (currentElement == 2) {
                 P.goDown();
-                setTimeout(function(){ P.goUp(); },30);
+                setTimeout(function(){ P.goDown(); },30);
               }
               
               if (currentElement == 3) {
@@ -288,6 +288,9 @@ function Player(state) {
 
   this.earnEnergy = function() {
     this.energy += energyEarned;
+    
+    if (this.energy == JSON.elements[currentElement].maxEnergy) 
+      nextElementForDemo()
   }
 
 
