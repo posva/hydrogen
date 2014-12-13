@@ -1,11 +1,11 @@
 function Game() {
-  this.isPlayable       = true; 	// Users can play
-  this.isVisible        = false; 	// The game is visible
-  this.isGameOver       = false;	// After the game, before the score sending
-  this.isSendingScore   = false;	// Users are sending their scores
-  this.isWaitingForGame = true;		// No user is present, the game is waiting
-  this.isIntro          = false;	// 3...2...1...startGame();
-  this.isStats          = false;	// Showing the stats of all the games
+  this.isPlayable			= true; 	// Users can play
+  this.isVisible			= false; 	// The game is visible
+  this.isGameOver		 	= false;	// After the game, before the score sending
+  this.isAnecdote 	  = false;	// Users are sending their scores
+  this.isWaitingForGame 	= true;		// No user is present, the game is waiting
+  this.isIntro			= false;	// 3...2...1...startGame();
+  this.isStats			= false;	// Showing the stats of all the games
 
   this.frame = function() {
 
@@ -82,7 +82,7 @@ function Game() {
         }
 
         if (Game.isGameOver) {
-
+          Game.anecdote();
         }
 
         else {
@@ -113,7 +113,7 @@ function Game() {
     Game.isPlayable			= true;
     Game.isVisible			= true;
     Game.isGameOver		 	= false;
-    Game.isSendingScore 	= false;
+    Game.isAnecdote 	  = false;	// Users are sending their scores
     Game.isWaitingForGame 	= false;
     Game.isIntro			= true;
     Game.isStats			= false;
@@ -149,12 +149,35 @@ function Game() {
 
     HUD = new HUD();
 
+  
     decorBackground 		= new ImgLoop(canvasB, img[currentElement].decorBackground, 0, -10, -1, 0);
     decorBackgroundFront 	= new ImgLoop(canvasB, img[currentElement].decorBackgroundFront, 0, 205, -10, 0);
     nuage 					= new ImgLoop(canvasM, img[currentElement].nuage, 0, -10, -7, 0);
     front 					= new ImgLoop(canvasF, img[currentElement].front, 0, 335, -10, 0);
 
     debug('newGame');
+  }
+  
+  
+  
+  this.anecdote = function() {
+    Game.isPlayable			= true;
+    Game.isVisible			= true;
+    Game.isGameOver		 	= true;
+    Game.isAnecdote 	  = true;	// Users are sending their scores
+    Game.isWaitingForGame 	= false;
+    Game.isIntro			= true;
+    Game.isStats			= false;
+    
+    canvasHUD.save();
+    canvasHUD.font = '200 36px Helvetica Neue';
+    canvasHUD.translate(GAME_W/2, GAME_H/2);
+    canvasHUD.fillStyle = 'white';
+    canvasHUD.textAlign = 'center';
+    canvasHUD.fillText("I'm afraid you just lost…!", 0, 0);
+    canvasHUD.restore();
+    
+    console.log('anecdote');
   }
 
 

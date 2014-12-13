@@ -47,12 +47,12 @@
   "obstaclesList": [
     "wallBottom",
     "wallTop",
-    "hole",
+    "hole2",
     "wallTopBig"
   ],
 
   "obstaclesFreq": [
-    1,2,3,4, 4, 4
+    1,2,3,4
   ],
 
   "obstacles": [
@@ -93,12 +93,12 @@
       "allowList":[1,0]
     },
     {
-      "id":"hole",
+      "id":"hole2",
       "w":250,
       "h":90,
       "x":880,
       "y":370,
-      "hitZoneW": 260,
+      "hitZoneW": 200,
       "hitZoneH": 70,
       "hitZoneX": 950,
       "hitZoneY": 350,

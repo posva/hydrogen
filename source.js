@@ -128,8 +128,8 @@ function loadJSON() {
   imgGas.src 		= JSON.states[GAS].sprite;
 
 
-  //	for (var i = 0; i <= JSON.elements.length-1; i++) {
-  for (var i = 1; i <= 1; i++) {
+  	for (var i = 0; i <= JSON.elements.length-1; i++) {
+ // for (var i = 1; i <= 1; i++) {
     img[i] = new Object();
 
     img[i].decorBackground 			= newImage("img/"+JSON.elements[i].id+"/background.png");

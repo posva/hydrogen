@@ -36,7 +36,7 @@ function Obstacle(type) {
       canvasM.fillStyle = "rgba(0,255,0,.5)";
       canvasM.fillRect(_.hitZoneX, _.hitZoneY, _.hitZoneW, _.hitZoneH);
     }
-
+    console.log(currentElement+' '+type);
     canvasM.drawImage(img[currentElement].obstacles[type], _.x, _.y+canvasMy);
 
     _.checkIfIsOut();

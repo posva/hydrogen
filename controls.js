@@ -23,6 +23,18 @@ $('body').on('keydown',function(e){
     DEBUG = !DEBUG;
   }
 
+  if (e.keyCode == 69) { // D
+    currentElement++;
+    
+    if (currentElement == 4) currentElement = 1;
+    
+    decorBackground 		= new ImgLoop(canvasB, img[currentElement].decorBackground, 0, -10, -1, 0);
+    decorBackgroundFront 	= new ImgLoop(canvasB, img[currentElement].decorBackgroundFront, 0, 205, -10, 0);
+    nuage 					= new ImgLoop(canvasM, img[currentElement].nuage, 0, -10, -7, 0);
+    front 					= new ImgLoop(canvasF, img[currentElement].front, 0, 335, -10, 0);
+
+  }
+
 
 }).on('click',function(){
   createObstacle();

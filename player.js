@@ -42,6 +42,10 @@ function Player(state) {
           addEffectVIP(new BlackScreen());
           //	speedX = -8;
           Game.isGameOver = true;
+      //    Game.anecdote();
+          
+          
+        //  Game.newGame();
         }
       }
 
