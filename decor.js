@@ -74,7 +74,7 @@ function ImgLoop(c, image, elemX, elemY, elemSpeedX, elemSpeedY) {
 
     this.context.save();
     
-    if (image == img[currentElement].decorBackgroundFront) console.log(this.y+cY);
+    //if (image == img[currentElement].decorBackgroundFront) console.log(this.y+cY);
     
     this.context.drawImage(this.img, this.x, this.y+cY);
 

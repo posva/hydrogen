@@ -34,8 +34,7 @@ for (var k in sounds) {
   if (sounds.hasOwnProperty(k)) {
     totalSounds++;
     sounds[k].addEventListener('loadeddata', soundOnLoad);
-    if (k !== 'music')
-      sounds[k].addEventListener('ended', reloadOnStop.bind(sounds[k]));
+    //if (k !== 'music') sounds[k].addEventListener('ended', reloadOnStop.bind(sounds[k]));
     sounds[k].src = soundsSrc[k];
     sounds[k].load();
   }
