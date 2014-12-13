@@ -24,8 +24,10 @@
       if (mancheStep > 35
        && mancheStep < speed-10
        && mancheStep % 10 == 0) {
-          if (!Game.isGameOver) createCoin();
+          if (!Game.isGameOver)
+            createCoin(mancheStep === Math.floor((speed-11)/10) * 10);
         }
+        //console.log('step:'+mancheStep+'.speed:'+(speed - 10)+'.calc:'+Math.floor((speed-11)/10));
 
 
         canvasB.clearRect(0, -GAME_H,	GAME_W, GAME_H * 3);

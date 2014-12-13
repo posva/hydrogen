@@ -1,5 +1,5 @@
 var coinPool = [], waitForSpecial = 0;
-function Coin(line) {
+function Coin(line, notSpecial) {
   this.line 	= line;
   this.w;
   this.h;
@@ -13,7 +13,11 @@ function Coin(line) {
   this.rotation;
   this.floatingUp = true;
   this.floatingY = 0;
-  this.isSpecial = waitForSpecial-- <= 0 && Math.random() < .25;
+  if (notSpecial) {
+    this.isSpecial = false;
+  } else {
+    this.isSpecial = waitForSpecial-- <= 0 && Math.random() < 0.25;
+  }
 
   if (this.line == 0 || this.line == 1) {
     this.isFire = (this.isSpecial && Math.random()>.5);
@@ -110,7 +114,7 @@ function Coin(line) {
   }
 }
 
-function createCoin() {
+function createCoin(notSpecial) {
   var state = P.state, r;
   if (coinPool.length === 0) {
     r = Math.floor(Math.random()*3);
@@ -120,7 +124,7 @@ function createCoin() {
   }
 
   r = coinPool.pop();
-  var coin = new Coin(r);
+  var coin = new Coin(r, notSpecial);
   coin.init();
   coins.push(coin);
 }
