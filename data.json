@@ -12,7 +12,6 @@
       "hitZoneX": 132,
       "hitZoneY": 328
     },
-<<<<<<< HEAD
     {
       "id":"solid",
       "sprite": "img/solid.png",
@@ -150,42 +149,42 @@
   },
 
   "coinLine": [ 330, 250, 120],
-  
+
   "anecdotes": [
     "Contrairement au solide ou au liquide, dû à sa légerté le gaz est aspiré par les courants d'air & les tourbillons d'air.",
 
     "Les éléments se sont formés à différentes périodes de l'histoire de l'univers.",
-    
+
     "Les processus de formations des éléments sont appelés processus de nucléosynthèse.",
-    
+
     "Le noyau d'un atome est composé de nucléons.",
-    
+
     "Il existe différents types de nucléosynthèses.",
-    
+
     "La nucléosynthèse stellaire apparaît pendant la formation d'une étoile.",
-    
+
     "Le Cuivre se forme à la suite d'une explosion de certaines étoiles.",
-    
+
     "Selon la taille et la densité des étoiles, celles-ci vont être à l'origine de différents éléments.",
-    
+
     "On regroupe la nucléosynthèse primordiale, la nucléosynthèse stellaire, la nucléosynthèse explosive et la nucléosynthèse de spallation.",
-    
+
     "La nuclosynthèse primordiale a permis la formation des premiers éléments de l'univers.",
-    
+
     "L'hydrogène a été formé dans les première minutes qui suivirent le big bang.",
-    
+
     "Savez-vous que notre univers est \"froid\" ?",
-    
+
     "La nucléosynthèse primordiale est survenue dans les premiers instants de l'univers.",
-    
+
     "C'est grâce à la chaleur de l'ordre du milliard de degrés que l'Hydrogène, l'Hélium et le Lithium, les premiers éléments, se sont formés.",
-    
+
     "La température de fusion du Cuivre est de 1085,7 °C.",
-    
+
     "C’est l’agencement des atomes entre eux qui déterminent l'état solide, liquide ou gazeux d'un éléments.",
-    
+
     "Le Cuivre à plus de 1085°C est à l'état liquide.",
-    
+
     "Les changements d'états font appellent à la thermodynamique."
   ]
 }
