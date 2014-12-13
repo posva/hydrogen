@@ -72,12 +72,19 @@ function ImgLoop(c, image, elemX, elemY, elemSpeedX, elemSpeedY) {
 
     this.x += this.speedX;
 
+    this.context.save();
+    
+    if (image == img[currentElement].decorBackgroundFront) console.log(this.y+cY);
+    
     this.context.drawImage(this.img, this.x, this.y+cY);
 
+    // add another image from right to left
     if (this.img.width - -this.x <= GAME_W) {
       this.context.drawImage(this.img, (this.img.width - -this.x), this.y+cY);
 
       if (this.img.width - -this.x <= 0) this.x = 0;
     }
+    
+    this.context.restore();
   }
 }
