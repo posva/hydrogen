@@ -109,6 +109,52 @@ function Halo(state) {
 
 
 
+
+function FreezeScreen() {
+  this.time = 0;
+  this.maxTime = 30;
+
+  this.draw = function() {
+    this.time++;
+    
+    canvasF.save();
+    canvasF.globalAlpha = .8-(this.time/this.maxTime*.8);
+    canvasF.drawImage(imgFreezeScreen,0,0);
+    canvasF.restore();
+
+
+    if (this.time >= this.maxTime) this.remove();
+  }
+
+  this.remove = function(){
+    effectsVIP.splice(effectsVIP.indexOf(this),1);
+  }
+}
+
+
+function FireScreen() {
+  this.time = 0;
+  this.maxTime = 30;
+
+  this.draw = function() {
+    this.time++;
+
+    canvasF.save();
+    canvasF.globalAlpha = .8-(this.time/this.maxTime*.8);
+    canvasF.drawImage(imgFireScreen,0,0);
+    canvasF.restore();
+
+
+    if (this.time >= this.maxTime) this.remove();
+  }
+
+  this.remove = function(){
+    effectsVIP.splice(effectsVIP.indexOf(this),1);
+  }
+}
+
+
+
 function TransitingPlayer(state, stateOld) {
 
   this.time     = 0;

@@ -123,6 +123,10 @@ imgSolid2Gas = new Image(),
 imgGas2Solid = new Image(),
 imgFeu = new Image(),
 imgGlace = new Image(),
+imgGotoUp = new Image(),
+imgGotoDown = new Image(),
+imgFreezeScreen = new Image(),
+imgFireScreen = new Image(),
 imgFlashEnergy = new Image();
 
 var imgHalo = new Array();
@@ -173,6 +177,12 @@ function loadJSON() {
   
   imgFeu.src 	 = 'img/boule_feu.png';
   imgGlace.src = 'img/boule_froid.png';
+  
+  imgFreezeScreen.src 	 = 'img/freezescreen.png';
+  imgFireScreen.src = 'img/firescreen.png';
+  
+  imgGotoUp.src 	 = 'img/gotoup.png';
+  imgGotoDown.src = 'img/gotodown.png';
 
   imgGas.src 		= JSON.states[GAS].sprite;
 

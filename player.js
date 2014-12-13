@@ -40,12 +40,42 @@ function Player(state) {
         if (this.isCollidingWithObstacle(obstacles[i])) {
           debug("collision");
           addEffectVIP(new BlackScreen());
-          //	speedX = -8;
           Game.isGameOver = true;
-      //    Game.anecdote();
+        }
+      }
+      
+      
+      var obs = obstacles[0];
+      
+      if (obs) {
+        if (obs.x > this.hitZoneX + this.hitZoneW) {
+          if (obs.allowList.indexOf(this.state) == -1) {
+            if (this.state == 0)
+              goToUp = true; 
+              
+            if (this.state == 1) {
+              if (obs.allowList.indexOf(0))
+                goToUp = true;
+                
+              if (obs.allowList.indexOf(2))
+                goToUp = false;
+                
+            }
 
-
-        //  Game.newGame();
+            if (this.state == 2)
+              goToUp = false; 
+              
+            canvasM.save();  
+            canvasM.globalAlpha = (this.hitZoneX + this.hitZoneW)/(obs.x-this.hitZoneX);
+              
+            if (goToUp) 
+              canvasM.drawImage(imgGotoUp, obs.x-80, obs.y-10-(this.hitZoneX + this.hitZoneW)/(obs.x)*100);
+            
+            else            
+              canvasM.drawImage(imgGotoDown, obs.x-80, obs.y+obs.hitZoneH-70+(this.hitZoneX + this.hitZoneW)/(obs.x)*100);
+              
+            canvasM.restore();            
+          }
         }
       }
 
@@ -54,11 +84,12 @@ function Player(state) {
         if (this.isCollidingWithCoin(thisCoin)) {
           debug("coin");
 
-
           if (thisCoin.isSpecial) {
             P.nextObs = null;
 
             if (thisCoin.isFire) {
+              
+              addEffectVIP(new FireScreen());
 
               // 1 azote
               // 2 cuivre
@@ -81,6 +112,8 @@ function Player(state) {
 
             }
             if (thisCoin.isFreeze) {
+              
+              addEffectVIP(new FreezeScreen());
 
               // 1 azote
               // 2 cuivre
