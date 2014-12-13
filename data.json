@@ -121,21 +121,25 @@
   "elements": [
     {
       "id":"hydrogen",
-      "i":0
+      "i":0,
+      "maxEnergy": 250
     },
     {
       "id":"azote",
-      "i":1
+      "i":1,
+      "maxEnergy": 250
     },
 
     {
       "id":"cuivre",
-      "i":2
+      "i":2,
+      "maxEnergy": 600
     },
 
     {
       "id":"mercure",
-      "i":3
+      "i":3,
+      "maxEnergy": 1200
     }
   ],
 

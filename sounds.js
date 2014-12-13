@@ -4,16 +4,32 @@ var sounds = {
   'gas'					: new Audio('sound/gas.ogg'),
   'music'					: new Audio('sound/music.ogg')
 };
-sounds['music'].addEventListener('ended', function() {
-  this.currentTime = 0;
-  this.play();
-}, false);
+var soundAvailable = {};
+
+var loadedAudio = function(i){
+  soundAvailable[i] = true;
+};
+
+for (var k in sounds) {
+  if (sounds.hasOwnProperty(k)) {
+    soundAvailable[k] = false;
+    sounds[k].addEventListener('onloadeddata', (loadedAudio).bind(null, k));
+    if (k === 'music') {
+      sounds[k].addEventListener('ended', function() {
+        this.currentTime = 0;
+        this.play();
+      }, false);
+    }
+  }
+}
+
 
 function Sound(name) {
-  //	this.sound = new Audio('s/P'+player+'_'+name+'.mp3');
-  this.sound = sounds[name];
-  this.sound.currentTime = 0;
-  this.sound.play();
+  if (soundAvailable[name]) {
+    this.sound = sounds[name];
+    this.sound.currentTime = 0;
+    this.sound.play();
+  }
 }
 
 function playSound(name) {
