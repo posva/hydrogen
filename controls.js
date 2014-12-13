@@ -11,13 +11,27 @@ $('body').on('keydown',function(e){
       P.goUp();
     }
 
-    if (e.keyCode == 39) { // RIGHT
-    }
-
     if (e.keyCode == 40) { // DOWN
       P.goDown();
     }
   }
+  
+  
+  
+  else {
+    if (e.keyCode == 38) { // UP
+     Game.newGame();
+         }
+
+    if (e.keyCode == 40) { // DOWN
+      Game.newGame();
+    }
+
+    if (e.keyCode == 39) { // RIGHT
+      Game.newGame();
+    }
+  }
+    
 
   if (e.keyCode == 68) { // D
     DEBUG = !DEBUG;
@@ -41,6 +55,10 @@ $('body').on('keydown',function(e){
 
 
 }).on('click',function(){
-  createObstacle();
+ // createObstacle();
   //	createCoin();
+  
+  if (Game.isGameOver) {
+    Game.newGame();
+  }
 });

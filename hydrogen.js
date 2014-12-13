@@ -1,4 +1,7 @@
-function Game() {
+
+    HUD = new HUD();
+    
+    function Game() {
   this.isPlayable			= true; 	// Users can play
   this.isVisible			= false; 	// The game is visible
   this.isGameOver		 	= false;	// After the game, before the score sending
@@ -147,7 +150,6 @@ function Game() {
 
     decor = new Decor();
 
-    HUD = new HUD();
 
   
     decorBackground 		= new ImgLoop(canvasB, img[currentElement].decorBackground, 0, -10, -1, 0);
@@ -170,14 +172,26 @@ function Game() {
     Game.isStats			= false;
     
     canvasHUD.save();
-    canvasHUD.font = '200 36px Helvetica Neue';
-    canvasHUD.translate(GAME_W/2, GAME_H/2);
+    canvasHUD.font = '200 60px Helvetica Neue';
+    canvasHUD.translate(GAME_W/2, GAME_H/2-10);
     canvasHUD.fillStyle = 'white';
     canvasHUD.textAlign = 'center';
-    canvasHUD.fillText("I'm afraid you just lost…!", 0, 0);
+    canvasHUD.fillText(P.energy+" Joules", 0, 0);
     canvasHUD.restore();
     
-    console.log('anecdote');
+    
+    canvasHUD.save();
+    
+    canvasHUD.font = '200 36px Helvetica Neue';
+    canvasHUD.translate(GAME_W/2, GAME_H/2+50);
+    canvasHUD.fillStyle = 'white';
+    canvasHUD.textAlign = 'center';
+    canvasHUD.fillText("Tap anywhere to restart!", 0, 0);
+    canvasHUD.restore();
+    
+    
+    
+ //   console.log('anecdote');
   }
 
 

@@ -1,8 +1,9 @@
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 
 
-
 $(function(){
+var HEIGHT = $(window).height();
+
   $.ajax({
     url: "data.json",
     dataType: "text",
@@ -13,19 +14,41 @@ $(function(){
       startGame();
     }
   });
+  
+  document.body.addEventListener('touchstart', function(e){ e.preventDefault(); });
 
-  var hammertime = new Hammer(document.getElementById('hydrogen'), {});
+  var hammertime = new Hammer(document.getElementsByTagName('html')[0], {});
+  
+  
+  hammertime.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
+  
   hammertime.on('swipedown', function(ev) {
     P.goDown();
-  })
+    console.log('swipe down');
+  });
+  
+  hammertime.on('panright', function(ev) {
+    BOT = !BOT;
+  });
 
   hammertime.on('swipeup', function(ev) {
     P.goUp();
   });
+  
+  
+  hammertime.on('tap', function(ev) {
+   if (ev.center.y >= HEIGHT/2) {
+     P.goDown();
+   }
+   else {P.goUp();
+   }
+  });
+  
+
 });
 
 var DEBUG = false;
-var BOT = true;
+var BOT = false;
 
 var Game;
 
