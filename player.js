@@ -10,7 +10,6 @@ function Player(state) {
   this.state		= state >= 0 ? state : SOLID;
   this.oldState   = -1;
 
-  console.log(currentElement);
   if (currentElement > 0)
     this.energy = JSON.elements[currentElement-1].maxEnergy;
   else
