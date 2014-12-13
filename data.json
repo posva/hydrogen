@@ -1,0 +1,152 @@
+{
+    "states": [
+        {
+	        "id":"liquid",
+         	"sprite": "img/liquid.png",
+         	"w": 155,
+         	"h": 113,
+         	"x": 50,
+         	"y": 325,
+         	"hitZoneW": 103,
+         	"hitZoneH": 73,
+         	"hitZoneX": 132,
+         	"hitZoneY": 328
+	    },
+        {
+	        "id":"solid",
+         	"sprite": "img/solid.png",
+         	"w": 200,
+         	"h": 200,
+         	"x": 50,
+         	"y": 230,
+         	"hitZoneW": 70,
+         	"hitZoneH": 166,
+         	"hitZoneX": 146,
+         	"hitZoneY": 230
+	    },
+        {
+	        "id":"gas",
+         	"sprite": "img/gaseous.png",
+         	"w": 155,
+         	"h": 126,
+         	"x": 0,
+         	"y": 80,
+         	"hitZoneW": 130,
+         	"hitZoneH": 126,
+         	"hitZoneX": 75,
+         	"hitZoneY": 80
+	    }
+    ],
+    
+    "statesTransition": [
+	  {
+		  "id":"solidToLiquid"
+	  }  
+    ],
+    
+    "obstaclesList": [
+	    "wallBottom",
+	    "wallTop",
+	    "hole",
+	    "wallTopBig"
+	],
+	
+	"obstaclesFreq": [
+		1,2,3,4, 4, 4
+	],
+    
+    "obstacles": [
+	    {
+			"id":"grid",
+			"w":60,
+			"h":400,
+			"x":880,
+			"y":20,
+         	"hitZoneW": 60,
+         	"hitZoneH": 400,
+         	"hitZoneX": 880,
+         	"hitZoneY": 20,
+			"allowList":[0,2]
+	    },
+	    {
+			"id":"wallBottom",
+			"w":60,
+			"h":150,
+			"x":980,
+			"y":210,
+         	"hitZoneW": 60,
+         	"hitZoneH": 150,
+         	"hitZoneX": 1020,
+         	"hitZoneY": 250,
+			"allowList":[2]
+	    },
+	    {
+			"id":"wallTop",
+			"w":60,
+			"h":150,
+			"x":880,
+			"y":-20,
+         	"hitZoneW": 60,
+         	"hitZoneH": 150,
+         	"hitZoneX": 880,
+         	"hitZoneY": 20,
+			"allowList":[1,0]
+	    },
+	    {
+			"id":"hole",
+			"w":250,
+			"h":90,
+			"x":880,
+			"y":370,
+         	"hitZoneW": 260,
+         	"hitZoneH": 70,
+         	"hitZoneX": 950,
+         	"hitZoneY": 350,
+			"allowList":[2]
+	    },
+	    {
+			"id":"wallTopBig",
+			"w":60,
+			"h":150,
+			"x":880,
+			"y":-20,
+         	"hitZoneW": 120,
+         	"hitZoneH": 300,
+         	"hitZoneX": 970,
+         	"hitZoneY": 20,
+			"allowList":[0]
+	    }
+    ],
+    
+    "elements": [
+	    {
+		    "id":"hydrogen",
+		    "i":0
+	    },
+	    {
+		    "id":"azote",
+		    "i":1
+	    },
+	    
+	    {
+		    "id":"mercure",
+		    "i":2
+	    },
+	    
+	    {
+		    "id":"cuivre",
+		    "i":3
+	    }
+    ],
+    
+    "coin": {
+	    "sprite":"img/coin.png",
+	    "sprite2":"img/coin2.png",
+		"w":40,
+		"h":40,
+     	"hitZoneW": 40,
+     	"hitZoneH": 40
+    },
+    
+    "coinLine": [ 330, 250, 120]
+}
