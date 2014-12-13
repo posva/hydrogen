@@ -43,8 +43,8 @@ function Player(state) {
           //	speedX = -8;
           Game.isGameOver = true;
       //    Game.anecdote();
-          
-          
+
+
         //  Game.newGame();
         }
       }
@@ -53,52 +53,51 @@ function Player(state) {
         var thisCoin = coins[i];
         if (this.isCollidingWithCoin(thisCoin)) {
           debug("coin");
-          
-          
+
+
           if (thisCoin.isSpecial) {
-        
+            P.nextObs = null;
+
             if (thisCoin.isFire) {
-              
+
               // 1 azote
               // 2 cuivre
               // 3 mercure
-              
+
               if (currentElement == 1) {
-                
+
                 P.goUp();
                 setTimeout(function(){ P.goUp(); },30);
-                
+
               }
               /*
               if (currentElement == 2) {
-                
+
                 P.goUp();
                 setTimeout(function(){ P.goUp(); },30);
-                
+
               }*/
-          
+
             }
             if (thisCoin.isFreeze) {
-              
+
               // 1 azote
               // 2 cuivre
               // 3 mercure
-              
+
               if (currentElement == 1) {
-                
+
                 P.goUp();
                 setTimeout(function(){ P.goUp(); },30);
-                
+
               }
             }
-            
-            
-          } 
-          
+
+          }
           else {
             this.earnEnergy();
           }
-          
+
         }
       }
     }
