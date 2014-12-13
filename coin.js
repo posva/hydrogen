@@ -1,4 +1,4 @@
-var coinPool = [];
+var coinPool = [], waitForSpecial = 0;
 function Coin(line) {
   this.line 	= line;
   this.w;
@@ -13,8 +13,11 @@ function Coin(line) {
   this.rotation;
   this.floatingUp = true;
   this.floatingY = 0;
-  this.isSpecial = Math.random() < .1;
+  this.isSpecial = waitForSpecial-- <= 0 && Math.random() < .25;
   
+  if (this.isSpecial)
+    waitForSpecial = 3; // wait again!
+
   if (this.line == 0 || this.line == 1) {
     this.isFire = (this.isSpecial && Math.random()>.5);
   }
