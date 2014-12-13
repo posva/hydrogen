@@ -4,6 +4,10 @@ var sounds = {
   'gas'					: new Audio('sound/gas.ogg'),
   'music'					: new Audio('sound/music.ogg')
 };
+sounds['music'].addEventListener('ended', function() {
+  this.currentTime = 0;
+  this.play();
+}, false);
 
 function Sound(name) {
   //	this.sound = new Audio('s/P'+player+'_'+name+'.mp3');
@@ -13,5 +17,8 @@ function Sound(name) {
 }
 
 function playSound(name) {
-  if (isSound) var newSound = new Sound(name);
+  var newSound;
+  if (isSound)
+    newSound = new Sound(name);
 }
+
