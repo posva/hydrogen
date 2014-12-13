@@ -52,14 +52,11 @@
             var i, diff;
             i = 0;
             diff = Math.abs(P.state - goTo);
-            console.log("diff:" + diff);
             var moveUp = function() {
               P.goUp();
-              console.log("UP");
             },
             moveDown = function() {
               P.goDown();
-              console.log("DOWN");
             };
             P.nextObs = obs;
             var moveFunc = P.state < goTo ? moveUp : moveDown;
