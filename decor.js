@@ -19,6 +19,7 @@ function Decor() {
 function HUD() {
 
   this.currentEnergy = 0; // nice effect
+  this.maxEnergy = 150; // nice effect
 
   this.draw = function() {
     canvasHUD.save();
@@ -33,16 +34,21 @@ function HUD() {
     canvasHUD.drawImage(img[currentElement].picto, GAME_W-100, 20);
 
     // draw progress
-    if (Math.abs(P.energy - this.currentEnergy) > 1) {
-      var ch = (P.energy - this.currentEnergy) / 2;
-      if (ch > 0)
-        ch = Math.max(ch, 1);
-      else
-        ch = Math.min(ch, -1);
-      this.currentEnergy += ch;
+    function wobble(to, from) {
+      if (Math.abs(to - from) > 1) {
+        var ch = (to - from) / 2;
+        if (ch > 0)
+          ch = Math.max(ch, 1);
+        else
+          ch = Math.min(ch, -1);
+        return ch;
+      }
+      return 0;
     }
+    this.currentEnergy += wobble(P.energy, this.currentEnergy);
+    this.maxEnergy += wobble(JSON.elements[currentElement].maxEnergy, this.maxEnergy);
     canvasHUD.fillStyle="white";
-    canvasHUD.fillRect(32, 34, (GAME_W - 32 - 220) * Math.min(1, this.currentEnergy / JSON.elements[currentElement].maxEnergy), 12);
+    canvasHUD.fillRect(32, 34, (GAME_W - 32 - 220) * Math.min(1, this.currentEnergy / this.maxEnergy), 12);
     canvasHUD.fillStyle="rgba(255,255,255,.3)";
     canvasHUD.fillRect(32, 34, GAME_W - 32 - 220, 12);
     canvasHUD.stroke();
