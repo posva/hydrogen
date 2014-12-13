@@ -1,5 +1,6 @@
 $('body').on('keydown',function(e){
   if(e.keyCode == 32){ // Space
+    BOT = !BOT;
   }
 
   if (!Game.isGameOver) {

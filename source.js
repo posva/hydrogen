@@ -25,6 +25,7 @@ $(function(){
 });
 
 var DEBUG = false;
+var BOT = true;
 
 var Game;
 

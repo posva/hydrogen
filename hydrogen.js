@@ -1,11 +1,11 @@
 function Game() {
-  this.isPlayable			= true; 	// Users can play
-  this.isVisible			= false; 	// The game is visible
-  this.isGameOver		 	= false;	// After the game, before the score sending
-  this.isSendingScore 	= false;	// Users are sending their scores
-  this.isWaitingForGame 	= true;		// No user is present, the game is waiting
-  this.isIntro			= false;	// 3...2...1...startGame();
-  this.isStats			= false;	// Showing the stats of all the games
+  this.isPlayable       = true; 	// Users can play
+  this.isVisible        = false; 	// The game is visible
+  this.isGameOver       = false;	// After the game, before the score sending
+  this.isSendingScore   = false;	// Users are sending their scores
+  this.isWaitingForGame = true;		// No user is present, the game is waiting
+  this.isIntro          = false;	// 3...2...1...startGame();
+  this.isStats          = false;	// Showing the stats of all the games
 
   this.frame = function() {
 
@@ -40,6 +40,32 @@ function Game() {
         effectsBCK.forEach(function(effectBCK){
           effectBCK.draw();
         });
+
+        // make player move by himself
+        var obs = obstacles[0];
+        if (BOT && obs && P.nextObs !== obs) {
+          if (obs.x < playerX || obs.x - playerX < 500) {
+            var goTo = JSON.obstacles[obs.type].allowList[0];
+            var i, diff;
+            i = 0;
+            diff = Math.abs(P.state - goTo);
+            console.log("diff:" + diff);
+            var moveUp = function() {
+              P.goUp();
+              console.log("UP");
+            },
+            moveDown = function() {
+              P.goDown();
+              console.log("DOWN");
+            };
+            P.nextObs = obs;
+            var moveFunc = P.state < goTo ? moveUp : moveDown;
+            while (i < diff) {
+              setTimeout(moveFunc, i * 300);
+              i++;
+            }
+          }
+        }
 
         decor.draw();
 
