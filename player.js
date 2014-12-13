@@ -65,18 +65,19 @@ function Player(state) {
               // 3 mercure
 
               if (currentElement == 1) {
-
                 P.goUp();
                 setTimeout(function(){ P.goUp(); },30);
-
               }
-              /*
+              
               if (currentElement == 2) {
-
+                P.goDown();
+                setTimeout(function(){ P.goUp(); },30);
+              }
+              
+              if (currentElement == 3) {
                 P.goUp();
                 setTimeout(function(){ P.goUp(); },30);
-
-              }*/
+              }
 
             }
             if (thisCoin.isFreeze) {
@@ -86,10 +87,18 @@ function Player(state) {
               // 3 mercure
 
               if (currentElement == 1) {
-
                 P.goUp();
                 setTimeout(function(){ P.goUp(); },30);
-
+              }
+              
+              if (currentElement == 2) {
+                if (this.state == LIQUID) P.goUp();
+                if (this.state == GAS)    P.goDown();  
+              }
+              
+              if (currentElement == 3) {
+                P.goDown();
+                setTimeout(function(){ P.goDown(); },30);
               }
             }
 
