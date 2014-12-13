@@ -11,7 +11,7 @@ function Player(state) {
   this.oldState   = -1;
 
   if (currentElement > 0)
-    this.energy = JSON.elements[currentElement-1].maxEnergy;
+    this.energy = json.elements[currentElement-1].maxEnergy;
   else
     this.energy = 150;
 
@@ -177,14 +177,14 @@ function Player(state) {
   }
 
   this.refreshPos = function() {
-    this.hitZoneW	= JSON.states[this.state].hitZoneW;
-    this.hitZoneH	= JSON.states[this.state].hitZoneH;
-    this.hitZoneX	= JSON.states[this.state].hitZoneX;
-    this.hitZoneY 	= JSON.states[this.state].hitZoneY;
-    this.w 			= JSON.states[this.state].w;
-    this.h 			= JSON.states[this.state].h;
-    this.x			= JSON.states[this.state].x;
-    this.y 			= JSON.states[this.state].y;
+    this.hitZoneW	= json.states[this.state].hitZoneW;
+    this.hitZoneH	= json.states[this.state].hitZoneH;
+    this.hitZoneX	= json.states[this.state].hitZoneX;
+    this.hitZoneY 	= json.states[this.state].hitZoneY;
+    this.w 			= json.states[this.state].w;
+    this.h 			= json.states[this.state].h;
+    this.x			= json.states[this.state].x;
+    this.y 			= json.states[this.state].y;
 
     if (this.state == LIQUID) {
       addEffectBCK(new MoveWorldForLiquid());
@@ -292,7 +292,7 @@ function Player(state) {
   this.earnEnergy = function() {
     this.energy += energyEarned;
     
-    if (this.energy >= JSON.elements[currentElement].maxEnergy)
+    if (this.energy >= json.elements[currentElement].maxEnergy)
       nextElementForDemo()
   }
 

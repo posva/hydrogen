@@ -46,7 +46,7 @@ function HUD() {
       return 0;
     }
     this.currentEnergy += wobble(P.energy, this.currentEnergy);
-    this.maxEnergy += wobble(JSON.elements[currentElement].maxEnergy, this.maxEnergy);
+    this.maxEnergy += wobble(json.elements[currentElement].maxEnergy, this.maxEnergy);
     canvasHUD.fillStyle="white";
     canvasHUD.fillRect(32, 34, (GAME_W - 32 - 220) * Math.min(1, this.currentEnergy / this.maxEnergy), 12);
     canvasHUD.fillStyle="rgba(255,255,255,.3)";

@@ -38,13 +38,13 @@ function Coin(line, notSpecial) {
   this.init = function() {
     _.x        = GAME_W;
     _.hitZoneX = GAME_W;
-    _.w        = JSON.coin.w;
-    _.h        = JSON.coin.h;
-    _.hitZoneW = JSON.coin.hitZoneW;
-    _.hitZoneH = JSON.coin.hitZoneH;
+    _.w        = json.coin.w;
+    _.h        = json.coin.h;
+    _.hitZoneW = json.coin.hitZoneW;
+    _.hitZoneH = json.coin.hitZoneH;
     _.opacity  = Math.random();
     _.rotation = Math.floor(Math.random()*360);
-    _.y        = _.hitZoneY                     = JSON.coinLine[this.line];
+    _.y        = _.hitZoneY                     = json.coinLine[this.line];
   }
 
   this.draw = function() {

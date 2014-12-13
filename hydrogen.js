@@ -50,7 +50,7 @@
         var obs = obstacles[0];
         if (BOT && obs && P.nextObs !== obs) {
           if (obs.x < playerX || obs.x - playerX < 500) {
-            var goTo = JSON.obstacles[obs.type].allowList[0];
+            var goTo = json.obstacles[obs.type].allowList[0];
             var i, diff;
             i = 0;
             diff = Math.abs(P.state - goTo);

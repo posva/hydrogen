@@ -12,17 +12,17 @@ function Obstacle(type) {
 
   this.init = function() {
     /*
-       _.w 		= JSON.obstacles[type].w;
-       _.h			= JSON.obstacles[type].h;
+       _.w 		= json.obstacles[type].w;
+       _.h			= json.obstacles[type].h;
        */
 
-    _.x			= JSON.obstacles[type].x;
-    _.y 		= JSON.obstacles[type].y;
-    _.hitZoneW 	= JSON.obstacles[type].hitZoneW;
-    _.hitZoneH	= JSON.obstacles[type].hitZoneH;
-    _.hitZoneX	= JSON.obstacles[type].hitZoneX;
-    _.hitZoneY 	= JSON.obstacles[type].hitZoneY;
-    _.allowList = JSON.obstacles[type].allowList;
+    _.x			= json.obstacles[type].x;
+    _.y 		= json.obstacles[type].y;
+    _.hitZoneW 	= json.obstacles[type].hitZoneW;
+    _.hitZoneH	= json.obstacles[type].hitZoneH;
+    _.hitZoneX	= json.obstacles[type].hitZoneX;
+    _.hitZoneY 	= json.obstacles[type].hitZoneY;
+    _.allowList = json.obstacles[type].allowList;
 
     _.w 		= img[currentElement].obstacles[type].width;
     _.h 		= img[currentElement].obstacles[type].height;
@@ -54,7 +54,7 @@ function Obstacle(type) {
 }
 
 function createObstacle() {
-  var type = JSON.obstaclesFreq[Math.floor(Math.random() * JSON.obstaclesFreq.length)];
+  var type = json.obstaclesFreq[Math.floor(Math.random() * json.obstaclesFreq.length)];
   var obstacle = new Obstacle(type);
   obstacle.init();
   obstacles.push(obstacle);

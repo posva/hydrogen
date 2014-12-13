@@ -8,27 +8,27 @@ var HEIGHT = $(window).height();
     url: "data.json",
     dataType: "text",
     success: function(data) {
-      JSON = $.parseJSON(data);
+      json = $.parseJSON(data);
       loadJSON();
       debug('loaded');
-      startGame();
+      checkAndStart();
     }
   });
-  
+
   document.body.addEventListener('touchstart', function(e){ e.preventDefault(); });
 
   var hammertime = new Hammer(document.getElementsByTagName('html')[0], {});
-  
-  
+
+
   hammertime.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
-  
+
   hammertime.on('swipedown', function(ev) {
    if (Game.isGameOver) {
      Game.newGame();
    } else { P.goDown(); }
-   
+
   });
-  
+
 
   hammertime.on('swipeup', function(ev) {
    if (Game.isGameOver) {
@@ -37,14 +37,14 @@ var HEIGHT = $(window).height();
     P.goUp();
     }
   });
-  
-  
+
+
   hammertime.on('tap', function(ev) {
-    
+
    if (Game.isGameOver) {
      Game.newGame();
     } else {
-      
+
      if (ev.center.y >= HEIGHT/2) {
        P.goDown();
      }
@@ -53,17 +53,17 @@ var HEIGHT = $(window).height();
      }
    }
   });
-  
-  
-  
+
+
+
   var toBotOrNotToBot = new Hammer(document.getElementById('tobotornottobot'), {});
-  
-  
-  
+
+
+
   toBotOrNotToBot.on('tap', function(ev) {
-    
+
    BOT = !BOT;
-   
+
   });
 
 });
@@ -109,26 +109,26 @@ var stateToElem = {
 var energyEarned = 1;
 energyLostByMoving = 0;
 
-var imgSolid = new Image(),
-imgLiquid = new Image(),
-imgGas = new Image(),
-imgStar = new Image(),
-imgCoin = new Image(),
-imgCoin2 = new Image(),
-imgBlackScreen = new Image(),
-imgSolidToLiquid = new Image(),
-imgLiquid2Solid = new Image(),
-imgSolid2Liquid = new Image(),
-imgSolid2Gas = new Image(),
-imgGas2Solid = new Image(),
-imgFeu = new Image(),
-imgGlace = new Image(),
-imgGotoUp = new Image(),
-imgGotoDown = new Image(),
-imgFreezeScreen = new Image(),
-imgFireScreen = new Image(),
-imgFlashBar = new Image(),
-imgFlashEnergy = new Image();
+var imgSolid,
+imgLiquid,
+imgGas,
+imgStar,
+imgCoin,
+imgCoin2,
+imgBlackScreen,
+imgSolidToLiquid,
+imgLiquid2Solid,
+imgSolid2Liquid,
+imgSolid2Gas,
+imgGas2Solid,
+imgFeu,
+imgGlace,
+imgGotoUp,
+imgGotoDown,
+imgFreezeScreen,
+imgFireScreen,
+imgFlashBar,
+imgFlashEnergy;
 
 var imgHalo = new Array();
 
@@ -151,59 +151,47 @@ var playerTransitionX = [50,40,10];
 
 
 function loadJSON() {
-  imgGas.src 		= JSON.states[GAS].sprite;
-  imgSolid.src 	= JSON.states[SOLID].sprite;
-  imgLiquid.src 	= JSON.states[LIQUID].sprite;
+  imgSolid = newImage(json.states[SOLID].sprite),
+  imgLiquid = newImage(json.states[LIQUID].sprite),
+  imgGas = newImage(json.states[GAS].sprite),
+  imgStar = newImage('img/star.png'),
+  imgCoin = newImage(json.coin.sprite),
+  imgCoin2 = newImage(json.coin.sprite2),
+  imgBlackScreen = newImage('img/blackscreen.png'),
+  //imgSolidToLiquid = new Image(),
+  imgLiquid2Solid = newImage('img/liquid2solid_bottom.png'),
+  imgSolid2Liquid = newImage('img/solid2liquid_bottom.png'),
+  imgSolid2Gas = newImage('img/solid2gas.png'),
+  imgGas2Solid = newImage('img/gas2solid.png'),
+  imgFeu = newImage('img/boule_feu.png'),
+  imgGlace = newImage('img/boule_froid.png'),
+  imgGotoUp = newImage('img/gotoup.png'),
+  imgGotoDown = newImage('img/gotodown.png'),
+  imgFreezeScreen = newImage('img/freezescreen.png'),
+  imgFireScreen = newImage('img/firescreen.png'),
+  imgFlashBar = newImage('img/flashbar.png'),
+  imgFlashEnergy = newImage('img/flashenergy.png');
 
-  imgLiquid2Solid.src 	= 'img/liquid2solid_bottom.png';
-  imgSolid2Liquid.src 	= 'img/solid2liquid_bottom.png';
-
-  imgSolid2Gas.src 	= 'img/solid2gas.png';
-  imgGas2Solid.src 	= 'img/gas2solid.png';
-
-  imgCoin.src		= JSON.coin.sprite;
-  imgCoin2.src	= JSON.coin.sprite2;
-
-  imgHalo[LIQUID] = new Image(),
-  imgHalo[SOLID] = new Image(),
-  imgHalo[GAS] = new Image();
-
-  imgHalo[LIQUID].src = 'img/haloliquid.png';
-  imgHalo[SOLID].src 	= 'img/halosolid.png';
-  imgHalo[GAS].src 	= 'img/halogas.png';
-
-  imgStar.src 	= 'img/star.png';
-  imgBlackScreen.src 	= 'img/blackscreen.png';
-  imgFlashEnergy.src 	= 'img/flashenergy.png';
-  imgFlashBar.src = 'img/flashbar.png';
-  
-  imgFeu.src 	 = 'img/boule_feu.png';
-  imgGlace.src = 'img/boule_froid.png';
-  
-  imgFreezeScreen.src 	 = 'img/freezescreen.png';
-  imgFireScreen.src = 'img/firescreen.png';
-  
-  imgGotoUp.src 	 = 'img/gotoup.png';
-  imgGotoDown.src = 'img/gotodown.png';
-
-  imgGas.src 		= JSON.states[GAS].sprite;
+  imgHalo[LIQUID] = newImage('img/haloliquid.png'),
+  imgHalo[SOLID] = newImage('img/halosolid.png'),
+  imgHalo[GAS] = newImage('img/halogas.png');
 
 
-  	for (var i = 1; i <= JSON.elements.length-1; i++) {
+  	for (var i = 1; i <= json.elements.length-1; i++) {
  // for (var i = 1; i <= 1; i++) {
     img[i] = new Object();
 
-    img[i].decorBackground 			= newImage("img/"+JSON.elements[i].id+"/background.png");
-    img[i].decorBackgroundFront 	= newImage("img/"+JSON.elements[i].id+"/background_front.png");
-    img[i].nuage 					= newImage("img/"+JSON.elements[i].id+"/nuage.png");
-    img[i].front 					= newImage("img/"+JSON.elements[i].id+"/front.png");
-    img[i].picto 					= newImage("img/"+JSON.elements[i].id+"/picto.png");
-    img[i].HUDbackgroundtopright 	= newImage("img/"+JSON.elements[i].id+"/hud_background_topright.png");
+    img[i].decorBackground       = newImage("img/"+json.elements[i].id+"/background.png");
+    img[i].decorBackgroundFront  = newImage("img/"+json.elements[i].id+"/background_front.png");
+    img[i].nuage                 = newImage("img/"+json.elements[i].id+"/nuage.png");
+    img[i].front                 = newImage("img/"+json.elements[i].id+"/front.png");
+    img[i].picto                 = newImage("img/"+json.elements[i].id+"/picto.png");
+    img[i].HUDbackgroundtopright = newImage("img/"+json.elements[i].id+"/hud_background_topright.png");
 
     img[i].obstacles = new Array();
 
-    for (var j = 1; j <= JSON.obstacles.length-1; j++) {
-      img[i].obstacles[j] = newImage("img/"+JSON.elements[i].id+"/"+JSON.obstacles[j].id+".png");
+    for (var j = 1; j <= json.obstacles.length-1; j++) {
+      img[i].obstacles[j] = newImage("img/"+json.elements[i].id+"/"+json.obstacles[j].id+".png");
     }
   }
 }
@@ -275,21 +263,27 @@ function debug(txt) {
 
 function newImage(src) {
   var image = new Image();
+  totalImages++;
+  image.onload = function() {
+    loadedImages++;
+    console.log('sounds:'+loadedImages+'/'+totalImages);
+    checkAndStart();
+  };
   image.src = src;
   return image;
 }
 
 function nextElementForDemo() {
-  
+
     currentElement++;
-    
+
     if (currentElement == 4) currentElement = 1;
-    
+
     if (currentElement == 1) $('html, body').css('background-image','url(img/pattern_azote.png)');
     if (currentElement == 2) $('html, body').css('background-image','url(img/pattern_cuivre.png)');
     if (currentElement == 3) $('html, body').css('background-image','url(img/pattern_mercure.png)');
-    
-    decorBackground 		  = new ImgLoop(canvasB, img[currentElement].decorBackground, 0, -10, -1, 0);
+
+    decorBackground 		= new ImgLoop(canvasB, img[currentElement].decorBackground, 0, -10, -1, 0);
     decorBackgroundFront 	= new ImgLoop(canvasB, img[currentElement].decorBackgroundFront, 0, 205, -10, 0);
     nuage 					      = new ImgLoop(canvasM, img[currentElement].nuage, 0, -10, -7, 0);
     front 					      = new ImgLoop(canvasF, img[currentElement].front, 0, 335, -10, 0);
