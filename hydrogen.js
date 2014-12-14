@@ -192,6 +192,12 @@ function Game() {
   }
   
   
+  // return random question object associated with currentElement
+  this.getRandomQuestion = function() {
+    var tab = json.questionsRelations[currentElement];
+    var i = Math.floor(Math.random() * tab);
+    return json.questions[i];
+  };
   
   this.anecdote = function() {
     Game.isPlayable			= true;
