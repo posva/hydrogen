@@ -50,3 +50,5 @@ $('body').on('keydown',function(e){
     Game.newGame();
   }
 });
+
+

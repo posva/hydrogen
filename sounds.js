@@ -8,6 +8,10 @@ var json = null; // save json data
 var loadedImages = loadedImages || 0; // prevent undefined errors
 var totalImages = totalImages || 0;
 function checkAndStart() {
+  /*
+  $('#sounds').text(loadedSounds+' '+totalSounds);
+  $('#imgs').text(loadedImages+' '+totalImages);
+  */
   if (json && loadedSounds === totalSounds && loadedImages === totalImages && loadedImages > 0 && loadedSounds > 0)
     startGame();
     

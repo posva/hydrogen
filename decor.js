@@ -24,7 +24,7 @@ function HUD() {
 
   this.draw = function() {
     canvasHUD.save();
-    canvasHUD.font = '200 18px HelveticaLight';
+    canvasHUD.font = '200 18px Arial';
     canvasHUD.translate(GAME_W-120, 47);
     canvasHUD.fillStyle = 'white';
     canvasHUD.textAlign = 'right';
