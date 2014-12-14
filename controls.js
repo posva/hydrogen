@@ -90,16 +90,16 @@ Leap.loop(function(frame) {
     //  console.log(position);
           
           
-      if (position > 350) {
+      if (position > 250) {
       	P.goDown();
       	P.goDown();
     	}
         
-        else if (position <= 350 && position > 100) {
+        else if (position <= 250 && position > 50) {
       	if (P.state == 2) P.goDown();
       	if (P.state == 0) P.goUp();
     	}
-        else if (position <= 100) {
+        else if (position <= 50) {
       	P.goUp();
       	P.goUp();
     	}
