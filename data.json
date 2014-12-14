@@ -194,6 +194,54 @@
     "Le Cuivre à plus de 1085°C est à l'état liquide.",
 
     "Les changements d'états font appellent à la thermodynamique."
+  ],
+
+  "questions" : [
+    {
+      "text": "What is the atomic nucleus made of?",
+      "answers": [
+        "Electrons",
+        "Nuclei",
+        "Hydrogen"
+      ],
+      "goodAnswer": 1
+    },
+    {
+      "text": "When was Hydrogen formed?",
+      "answers": [
+        "Few years after the Big Bang",
+        "In the first minutes after the Big Bang",
+        "Before the Big Bang"
+      ],
+      "goodAnswer": 1
+    },
+    {
+      "text": "How was Copper created?",
+      "answers": [
+        "Following a star explosion",
+        "By melting lead and iron together",
+        "It was salvaged from an electrical wire"
+      ],
+      "goodAnswer": 0
+    },
+    {
+      "text": "What is the fusion temperature of Copper?",
+      "answers": [
+        "411.8 °F",
+        "1 986,26 °F",
+        "3 705,08 °F"
+      ],
+      "goodAnswer": 1
+    },
+    {
+      "text": "When does stellar nucleosynthesis happen?",
+      "answers": [
+        "During a star formation",
+        "During a black hole formation",
+        "In the Neanderthal era"
+      ],
+      "goodAnswer": 0
+    }
   ]
 }
 
