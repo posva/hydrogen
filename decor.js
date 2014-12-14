@@ -18,7 +18,9 @@ function Decor() {
 function HUD() {
 
   this.currentEnergy = 0; // nice effect
-  this.maxEnergy = 150; // nice effect
+  this.maxEnergy = json.elements[currentElement].maxEnergy; // nice effect
+  
+  console.log(this.maxEnergy);
 
   this.draw = function() {
     canvasHUD.save();

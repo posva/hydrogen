@@ -122,23 +122,27 @@
     {
       "id":"hydrogen",
       "i":0,
+      "minEnergy": 0,
       "maxEnergy": 150
     },
     {
       "id":"azote",
       "i":1,
+      "minEnergy": 150,
       "maxEnergy": 250
     },
 
     {
       "id":"cuivre",
       "i":2,
+      "minEnergy": 250,
       "maxEnergy": 600
     },
 
     {
       "id":"mercure",
       "i":3,
+      "minEnergy": 600,
       "maxEnergy": 1200
     }
   ],

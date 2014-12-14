@@ -9,11 +9,7 @@ var isTransiting = false;
 function Player(state) {
   this.state		= state >= 0 ? state : SOLID;
   this.oldState   = -1;
-
-  if (currentElement > 0)
-    this.energy = json.elements[currentElement-1].maxEnergy;
-  else
-    this.energy = 150;
+  this.energy = json.elements[currentElement].minEnergy;
 
 
   this.init = function() {

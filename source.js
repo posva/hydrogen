@@ -201,7 +201,7 @@ function newImage(src) {
   totalImages++;
   image.onload = function() {
     loadedImages++;
-    console.log('sounds:'+loadedImages+'/'+totalImages);
+  //  console.log('sounds:'+loadedImages+'/'+totalImages);
     checkAndStart();
   };
   image.src = src;
@@ -292,7 +292,7 @@ var HEIGHT = $(window).height();
 
    if (Game.isGameOver) {
      Game.newGame();
-    } else {
+    } else if (Game.isPlayable) {
 
      if (ev.center.y >= HEIGHT/2) {
        P.goDown();

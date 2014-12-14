@@ -208,7 +208,7 @@ function BlackScreen() {
   this.draw = function() {
     this.time++;
 
-    if (this.time <= 40) 	this.opac = 1;
+    if (this.time <= 0) 	this.opac = 1;
     else 					this.opac = this.opac - .01;
 
     if (this.opac <= 0.5)   this.opac = .5;

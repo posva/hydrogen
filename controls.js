@@ -3,7 +3,7 @@ $('body').on('keydown',function(e){
     BOT = !BOT;
   }
 
-  if (!Game.isGameOver) {
+  if (!Game.isGameOver && Game.isPlayable) {
     if (e.keyCode == 37) { // LEFT
     }
 
@@ -37,7 +37,7 @@ $('body').on('keydown',function(e){
     DEBUG = !DEBUG;
   }
 
-  if (e.keyCode == 69) { // D
+  if (e.keyCode == 69) { // E
     nextElementForDemo();
   }
 

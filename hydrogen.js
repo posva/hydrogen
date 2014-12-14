@@ -1,4 +1,3 @@
-HUD = new HUD();
     
 function Game() {
   this.isPlayable			= false; 	// Users can play
@@ -31,9 +30,6 @@ function Game() {
 
 
     this.initAnimations();
-
-    P = new Player(SOLID);
-    P.init();
 
     decor = new Decor();
 
@@ -151,11 +147,20 @@ function Game() {
     Game.isStats			= false;
 
     playSound('music');
+    
+    HUD = new HUD();
+
+
+    P = new Player(SOLID);
+    P.init();
 
     $('#menu').addClass('showforplayable');
 
     speed = 100;
     speedX = -10;
+    
+    
+    
     
     console.log('new game');
 
