@@ -91,7 +91,7 @@ Leap.loop(function(frame) {
       position = position[1];
       
       
-    //  console.log(position);
+      console.log(position);
           
           
       if (position > 250) {

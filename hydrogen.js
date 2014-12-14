@@ -168,11 +168,11 @@ function Game() {
 
     speed = 100;
     speedX = -10;
-
+/*
     for (var i = 0; i <= 10; i++) {
       stars.push(new Star());
     }
-
+*/
     this.initAnimations();
 
     speed = 100;
