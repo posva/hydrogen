@@ -196,7 +196,16 @@ function Game() {
   this.getRandomQuestion = function() {
     var tab = json.questionsRelations[currentElement];
     var i = Math.floor(Math.random() * tab);
+    this.goodAnswer = json.questions[i].goodAnswer;
     return json.questions[i];
+  };
+
+  this.checkAnswer = function(i) {
+    if (this.goodAnswer === i) {
+      this.isPlayable = true;
+    } else {
+      this.newGame();
+    }
   };
   
   this.anecdote = function() {
