@@ -300,7 +300,16 @@ var HEIGHT = $(window).height();
      }
   });
 
-
+  save.lastPlayed = new Date();
+  saveData();
+  $(window).bind('beforeunload', function(){
+    return;
+    var now = new Date();
+    var elapsed = now - save.lastPlayed;
+    save.playTime = save.playTime || 0;
+    save.playTime += elapsed;
+    saveData();
+  });
 
 //  var toBotOrNotToBot = new Hammer(document.getElementById('tobotornottobot'), {});
 

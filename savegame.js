@@ -2,7 +2,11 @@ var save = null;
 if(typeof(Storage) !== "undefined") {
   save = localStorage.getItem('savegame');
   if (save)
-    save = $.parseJSON(save);
+    try {
+      save = $.parseJSON(save);
+    } catch (e) {
+      save = {};
+    }
   else
     save = {};
 } else {
@@ -10,5 +14,5 @@ if(typeof(Storage) !== "undefined") {
 }
 
 function saveData() {
-  localStorage.setItem($.stringify(save));
+  localStorage.setItem('savegame', JSON.stringify(save));
 }
