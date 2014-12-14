@@ -150,10 +150,29 @@ function Game() {
     
     
 
-    playSound('music');
-    
     HUD = new HUD();
+    canvasB = document.getElementById('canvas_back').getContext('2d');
+    canvasM = document.getElementById('canvas_mid').getContext('2d');
+    canvasF = document.getElementById('canvas_front').getContext('2d');
+    canvasHUD = document.getElementById('canvas_hud').getContext('2d');
 
+    coins             = new Array();
+    obstacles         = new Array();
+    effectsBCK        = new Array();
+    effects   = new Array();
+    effectsVIP        = new Array();
+    stars             = new Array();
+
+    playMusic(currentElement);
+
+    speed = 100;
+    speedX = -10;
+
+    for (var i = 0; i <= 10; i++) {
+      stars.push(new Star());
+    }
+
+    this.initAnimations();
 
     P = new Player(SOLID);
     P.init();

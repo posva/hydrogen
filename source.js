@@ -40,7 +40,7 @@ var stateToElem = {
   2:"gas"
 };
 
-var energyEarned = 1;
+var energyEarned = 50;
 energyLostByMoving = 0;
 
 var imgSolid,
@@ -201,7 +201,7 @@ function newImage(src) {
   totalImages++;
   image.onload = function() {
     loadedImages++;
-    console.log('imgs:'+loadedImages+'/'+totalImages);
+  //  console.log('images:'+loadedImages+'/'+totalImages);
     checkAndStart();
   };
   image.src = src;
@@ -210,6 +210,7 @@ function newImage(src) {
 
 function nextElementForDemo() {
 
+  playNextMusic(currentElement);
     currentElement++;
 
     if (currentElement == 4) currentElement = 1;
