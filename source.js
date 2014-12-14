@@ -4,6 +4,7 @@ window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequest
 
 var DEBUG = false;
 var BOT = false;
+var GOD = false;
 
 var isSound = true;
 

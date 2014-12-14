@@ -13,6 +13,7 @@ function Player(state) {
 
   this.init = function() {
     this.energy = json.elements[currentElement].minEnergy;
+    this.assignSpeed();
     this.refreshPos();
     this.drawPlayerInit();
     this.drawPlayer();
@@ -21,6 +22,12 @@ function Player(state) {
   this.drawPlayerInit = function() {
     console.log('init player');
   }
+
+  this.assignSpeed = function() {
+    var a = json.elements[currentElement].minEnergy, b = json.elements[currentElement].maxEnergy, diff = b - a, playA = this.energy - a;
+    var percent = playA / diff;
+    speedX = -10 - 1 * (currentElement - 1)*3 - 2 * Math.floor(percent / 0.3);
+  };
 
   this.drawPlayer = function() {
     if (DEBUG) {
@@ -36,7 +43,7 @@ function Player(state) {
 
     if (!Game.isGameOver) {
       for (var i = obstacles.length; i--;) {
-        if (this.isCollidingWithObstacle(obstacles[i])) {
+        if (!GOD && this.isCollidingWithObstacle(obstacles[i])) {
           debug("collision");
           addEffectVIP(new BlackScreen());
           Game.isGameOver = true;
@@ -289,9 +296,7 @@ function Player(state) {
   this.earnEnergy = function() {
     this.energy += energyEarned;
     
-    if (this.energy-json.elements[currentElement].minEnergy >= ((json.elements[currentElement].maxEnergy-json.elements[currentElement].minEnergy)/2)) {
-      speedX = -15;
-    }
+    this.assignSpeed();
     
     if (this.energy >= json.elements[currentElement].maxEnergy)
       nextElementForDemo();

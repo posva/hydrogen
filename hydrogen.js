@@ -175,13 +175,13 @@ function Game() {
 
     this.initAnimations();
 
+    speed = 100;
+    speedX = -10;
     P = new Player(SOLID);
     P.init();
 
     $('#menu').addClass('showforplayable');
 
-    speed = 100;
-    speedX = -10;
     
     
     

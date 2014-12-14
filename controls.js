@@ -41,6 +41,10 @@ $('body').on('keydown',function(e){
     nextElementForDemo();
   }
 
+  if (e.keyCode == 71) { // G
+    GOD = !GOD;
+  }
+
 
 }).on('click',function(){
  // createObstacle();
