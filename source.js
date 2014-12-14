@@ -40,7 +40,7 @@ var stateToElem = {
   2:"gas"
 };
 
-var energyEarned = 50;
+var energyEarned = 1;
 energyLostByMoving = 0;
 
 var imgSolid,
