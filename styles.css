@@ -71,8 +71,10 @@ html, body {
   background:rgb(32,30,29);
   color:white;
   font-family:HelveticaLight, sans-serif;
-  opacity:1
+  opacity:1;
+  
 }
+
 
 #menucache {
   position:absolute;
@@ -93,6 +95,8 @@ html, body {
 /*  top:-100%;*/
   opacity:0
 }
+
+#menu.showforplayable {display:none;}
 
 #menu.showforplayable .level {
   -webkit-transform:scale(.5);
@@ -364,6 +368,28 @@ html, body {
 .showlevels #cats { top:-440px; }
 .showlevels #levels { top:0px; }
 
+#loading {
+  
+  position:absolute;
+  width:880px;
+  height:440px;
+  top:50%;
+  left:50%;
+  margin:-220px 0 0 -440px;
+  overflow:hidden;
+  background:rgb(32,30,29);
+  color:white;
+  font-family:HelveticaLight, sans-serif;
+  opacity:1;
+}
+
+#loading img {
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin:-10px;
+}
+
 
 /* -317px */
 
@@ -380,4 +406,7 @@ html, body {
 .showtabachievements .anecdotes { left:-317px; }
 .showtabachievements .questions { left:-317px; }
 
+
+
+*::-webkit-scrollbar { width: 0 !important }
 

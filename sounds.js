@@ -19,8 +19,13 @@ var totalSounds = 0, loadedSounds = 0;
 var json = null; // save json data
 var loadedImages = loadedImages || 0; // prevent undefined errors
 var totalImages = totalImages || 0;
+
 function checkAndStart() {
-  if (json && loadedSounds === totalSounds && loadedImages === totalImages && loadedImages > 0 && loadedSounds > 0)
+  
+  $('#sounds').text(loadedSounds+'/'+totalSounds);
+  $('#imgs').text(loadedImages+'/'+totalImages);
+  
+  if (json /*&& loadedSounds === totalSounds*/ && loadedImages === totalImages && loadedImages > 0/* && loadedSounds > 0*/)
     startGame();
     
 }
@@ -54,8 +59,9 @@ function Sound(name) {
   this.sound.play();
 }
 
-function playSound(name) {
+function playSound(name) {/*
   var newSound;
    if (isSound) newSound = new Sound(name);
+   */
 }
 

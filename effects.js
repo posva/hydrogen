@@ -220,6 +220,7 @@ function BlackScreen() {
     canvasF.drawImage(imgBlackScreen, 0, 0);
     canvasF.restore();
 
+    if (this.opac <= .5) this.remove();
 
   }
 

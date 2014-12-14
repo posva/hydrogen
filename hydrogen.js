@@ -32,6 +32,8 @@ function Game() {
     this.initAnimations();
 
     decor = new Decor();
+    
+    
 
     initElement(1);
   }
@@ -145,6 +147,8 @@ function Game() {
     Game.isWaitingForGame 	= false;
     Game.isIntro			= true;
     Game.isStats			= false;
+    
+    
 
     playSound('music');
     
@@ -242,6 +246,8 @@ function Game() {
 }
 
 function startGame() {
+
+  $('#loading').fadeOut(200);
 
   Game = new Game();
   Game.init();

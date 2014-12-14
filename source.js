@@ -201,7 +201,7 @@ function newImage(src) {
   totalImages++;
   image.onload = function() {
     loadedImages++;
-  //  console.log('sounds:'+loadedImages+'/'+totalImages);
+    console.log('imgs:'+loadedImages+'/'+totalImages);
     checkAndStart();
   };
   image.src = src;
@@ -266,71 +266,80 @@ var HEIGHT = $(window).height();
 
   document.body.addEventListener('touchstart', function(e){ e.preventDefault(); });
 
-  var hammertime = new Hammer(document.getElementsByTagName('html')[0], {});
+//  var hammertime = new Hammer(document.getElementsByTagName('html')[0], {});
 
-
-  hammertime.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
-
-  hammertime.on('swipedown', function(ev) {
-   if (Game.isGameOver) {
-     Game.newGame();
-   } else { P.goDown(); }
-
-  });
-
-
-  hammertime.on('swipeup', function(ev) {
+  $('html').hammer({}).bind('swipedown',function(){
+    if (Game.isGameOver) {
+      Game.newGame();
+    } else { 
+      P.goDown(); 
+    }
+  })
+  
+   $('html').hammer({}).bind('swipeup',function(){
    if (Game.isGameOver) {
      Game.newGame();
     } else {
     P.goUp();
     }
+  })
+  
+   $('html').hammer({}).bind('tap',function(ev){
+    
+      if (Game.isGameOver) {
+       Game.newGame();
+      } else if (Game.isPlayable) {
+      
+       if (ev.gesture.pointers[0].clientY >= HEIGHT/2) {
+         P.goDown();
+       }
+       else {
+         P.goUp();
+       }
+     }
   });
 
 
-  hammertime.on('tap', function(ev) {
 
-   if (Game.isGameOver) {
-     Game.newGame();
-    } else if (Game.isPlayable) {
+//  var toBotOrNotToBot = new Hammer(document.getElementById('tobotornottobot'), {});
 
-     if (ev.center.y >= HEIGHT/2) {
-       P.goDown();
-     }
-     else {
-       P.goUp();
-     }
-   }
-  });
-
-
-
-  var toBotOrNotToBot = new Hammer(document.getElementById('tobotornottobot'), {});
-
-
-
-  toBotOrNotToBot.on('tap', function(ev) {
-
+  $('#tobotornottobot').hammer({}).bind('tap',function(){ 
    BOT = !BOT;
-
   });
-
 
 
 
   $('.switch div').on('click',function(){
-    var level = $(this).closest('.level');
-    
-    level.removeClass('showtabquestions showtabachievements showtabanecdotes').addClass('showtab'+$(this).data('id'));
-    level.find('.switch div').removeClass('active');
-    $(this).addClass('active');
+    changeSwitchDiv($(this));  
+  });
+
+  $('.switch div').hammer({}).bind('tap',function(){
+    changeSwitchDiv($(this));  
+  //  alert('hey');
   });
   
   
   $('.playit').on('click',function(){
-    console.log(parseInt($(this).data('element')));
-    initElement(parseInt($(this).data('element')));
-    Game.newGame();
+    playIt($(this));
   });
+  
+  
+  $('.playit').hammer({}).bind('tap',function(){
+    playIt($(this));  
+ //   alert($(this));
+  });
+  
+  function changeSwitchDiv(t) {
+    var level = t.closest('.level');
+    
+    level.removeClass('showtabquestions showtabachievements showtabanecdotes').addClass('showtab'+t.data('id'));
+    level.find('.switch div').removeClass('active');
+    t.addClass('active');
+  }
+  
+  function playIt(t) {
+    initElement(parseInt(t.data('element')));
+    Game.newGame();
+  }
 
 });
