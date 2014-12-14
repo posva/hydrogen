@@ -52,3 +52,73 @@ $('body').on('keydown',function(e){
 });
 
 
+
+Leap.loop(function(frame) {
+	/*
+	if (Game.isSendingScore && (frame.hands.length == 0 || frame.hands.length > 1)) {
+		$('#prompt2 div').removeClass('active');
+	}
+	
+	if (Game.isPlayable && (frame.hands.length == 0)) {
+		P2.signalLost();
+	}
+	*/
+	frame.hands.forEach(function(hand, index) {
+  
+  //	console.log(hand.palmPosition[0]+' '+hand.palmPosition[1]+' '+hand.palmPosition[2]);
+  	//	console.log(hand.screenPosition());
+  		
+        /*
+        if (position > 350) {
+          console.log('down');
+        }
+        if (position <= 350 && position > 100) {
+          console.log('middle');
+        }
+        if (position <= 100) {
+          console.log('up');
+        }
+        
+     //   console.log(position[2]);
+  		
+  		*/
+    if (!Game.isGameOver && P) {
+      var position = hand.screenPosition();
+      position = position[1];
+      
+      
+    //  console.log(position);
+          
+          
+      if (position > 350) {
+      	P.goDown();
+      	P.goDown();
+    	}
+        
+        else if (position <= 350 && position > 100) {
+      	if (P.state == 2) P.goDown();
+      	if (P.state == 0) P.goUp();
+    	}
+        else if (position <= 100) {
+      	P.goUp();
+      	P.goUp();
+    	}
+  	}
+  	
+  	
+  	
+  	//console.log(parseInt(hand.screenPosition()));
+  	/*
+		if (Game.isPlayable) {
+		 	P2.moveFromHand(parseInt(hand.screenPosition()));
+		 	P2.checkIfThrowMissile(hand.fingers);
+		 	
+		 	
+ 		}
+ 		if (Game.isSendingScore) {
+ 			if (frame.hands.length == 1 && canSend == true) P2.moveLetters(hand.screenPosition());
+ 		}*/
+ 	});
+ 	
+ 	
+}).use('screenPosition', {scale: 0.25});

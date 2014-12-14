@@ -289,6 +289,10 @@ function Player(state) {
   this.earnEnergy = function() {
     this.energy += energyEarned;
     
+    if (this.energy-json.elements[currentElement].minEnergy >= ((json.elements[currentElement].maxEnergy-json.elements[currentElement].minEnergy)/2)) {
+      speedX = -15;
+    }
+    
     if (this.energy >= json.elements[currentElement].maxEnergy)
       nextElementForDemo();
   }
@@ -316,8 +320,4 @@ function Player(state) {
     }
   }
 
-  this.addPoint = function() {
-    this.points++;
-    this.drawPoints();
-  }
 }

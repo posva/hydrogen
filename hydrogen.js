@@ -218,7 +218,7 @@ function Game() {
     Game.isStats			= false;
     
     canvasHUD.save();
-    canvasHUD.font = '200 60px Helvetica Neue';
+    canvasHUD.font = '200 60px Arial';
     canvasHUD.translate(GAME_W/2, GAME_H/2-10);
     canvasHUD.fillStyle = 'white';
     canvasHUD.textAlign = 'center';
@@ -228,7 +228,7 @@ function Game() {
     
     canvasHUD.save();
     
-    canvasHUD.font = '200 36px Helvetica Neue';
+    canvasHUD.font = '200 36px Arial';
     canvasHUD.translate(GAME_W/2, GAME_H/2+50);
     canvasHUD.fillStyle = 'white';
     canvasHUD.textAlign = 'center';
