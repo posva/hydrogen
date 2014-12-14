@@ -18,12 +18,15 @@ function checkAndStart() {
 }
 
 var sounds = {
-  'solid'  : null,
-  'liquid' : null,
-  'gas'    : null,
-  'music1' : null,
-  'music2' : null,
-  'music3' : null,
+  'solid'    : null,
+  'liquid'   : null,
+  'gas'      : null,
+  'music1'   : null,
+  'music2'   : null,
+  'music3'   : null,
+  'blueBall' : null,
+  'redBall'  : null,
+  'coin'     : null,
 };
 
 for (var k in sounds) {

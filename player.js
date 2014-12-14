@@ -82,12 +82,13 @@ function Player(state) {
         var thisCoin = coins[i];
         if (this.isCollidingWithCoin(thisCoin)) {
           debug("coin");
+          playSound('coin');
 
           if (thisCoin.isSpecial) {
             P.nextObs = null;
 
             if (thisCoin.isFire) {
-              
+              playSound('redBall');
               addEffectVIP(new FireScreen());
 
               // 1 azote
@@ -111,7 +112,7 @@ function Player(state) {
 
             }
             if (thisCoin.isFreeze) {
-              
+              playSound('blueBall');
               addEffectVIP(new FreezeScreen());
 
               // 1 azote
