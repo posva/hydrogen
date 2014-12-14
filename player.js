@@ -9,10 +9,10 @@ var isTransiting = false;
 function Player(state) {
   this.state		= state >= 0 ? state : SOLID;
   this.oldState   = -1;
-  this.energy = json.elements[currentElement].minEnergy;
 
 
   this.init = function() {
+    this.energy = json.elements[currentElement].minEnergy;
     this.refreshPos();
     this.drawPlayerInit();
     this.drawPlayer();
