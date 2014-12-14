@@ -1,14 +1,44 @@
-
-    HUD = new HUD();
+HUD = new HUD();
     
-    function Game() {
-  this.isPlayable			= true; 	// Users can play
+function Game() {
+  this.isPlayable			= false; 	// Users can play
   this.isVisible			= false; 	// The game is visible
   this.isGameOver		 	= false;	// After the game, before the score sending
   this.isAnecdote 	  = false;	// Users are sending their scores
   this.isWaitingForGame 	= true;		// No user is present, the game is waiting
   this.isIntro			= false;	// 3...2...1...startGame();
   this.isStats			= false;	// Showing the stats of all the games
+  
+  this.init = function() {
+    
+    canvasB = document.getElementById('canvas_back').getContext('2d');
+    canvasM = document.getElementById('canvas_mid').getContext('2d');
+    canvasF = document.getElementById('canvas_front').getContext('2d');
+    canvasHUD = document.getElementById('canvas_hud').getContext('2d');
+
+    coins 		= new Array();
+    obstacles 	= new Array();
+    effectsBCK 	= new Array();
+    effects 	= new Array();
+    effectsVIP 	= new Array();
+    stars 		= new Array();
+
+    for (var i = 0; i <= 10; i++) {
+      stars.push(new Star());
+    }
+    
+    speedX = 0;
+
+
+    this.initAnimations();
+
+    P = new Player(SOLID);
+    P.init();
+
+    decor = new Decor();
+
+    initElement(1);
+  }
 
   this.frame = function() {
 
@@ -120,41 +150,14 @@
     Game.isIntro			= true;
     Game.isStats			= false;
 
-    canvasB = document.getElementById('canvas_back').getContext('2d');
-    canvasM = document.getElementById('canvas_mid').getContext('2d');
-    canvasF = document.getElementById('canvas_front').getContext('2d');
-    canvasHUD = document.getElementById('canvas_hud').getContext('2d');
-
-    coins 		= new Array();
-    obstacles 	= new Array();
-    effectsBCK 	= new Array();
-    effects 	= new Array();
-    effectsVIP 	= new Array();
-    stars 		= new Array();
-
     playSound('music');
+
+    $('#menu').addClass('showforplayable');
 
     speed = 100;
     speedX = -10;
-
-    for (var i = 0; i <= 10; i++) {
-      stars.push(new Star());
-    }
-
-
-    this.initAnimations();
-
-    P = new Player(SOLID);
-    P.init();
-
-    decor = new Decor();
-
-
-  
-    decorBackground 		= new ImgLoop(canvasB, img[currentElement].decorBackground, 0, -10, -1, 0);
-    decorBackgroundFront 	= new ImgLoop(canvasB, img[currentElement].decorBackgroundFront, 0, 205, -10, 0);
-    nuage 					= new ImgLoop(canvasM, img[currentElement].nuage, 0, -10, -7, 0);
-    front 					= new ImgLoop(canvasF, img[currentElement].front, 0, 335, -10, 0);
+    
+    console.log('new game');
 
     debug('newGame');
   }
@@ -236,7 +239,8 @@
 function startGame() {
 
   Game = new Game();
-  Game.newGame();
+  Game.init();
+ // Game.newGame();
 
   requestAnimationFrame(Game.frame);
 }

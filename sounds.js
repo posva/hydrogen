@@ -22,6 +22,7 @@ var totalImages = totalImages || 0;
 function checkAndStart() {
   if (json && loadedSounds === totalSounds && loadedImages === totalImages && loadedImages > 0 && loadedSounds > 0)
     startGame();
+    
 }
   
 var soundOnLoad = function(ev) {
@@ -36,6 +37,7 @@ for (var k in sounds) {
     sounds[k].addEventListener('loadeddata', soundOnLoad);
     //if (k !== 'music') sounds[k].addEventListener('ended', reloadOnStop.bind(sounds[k]));
     sounds[k].src = soundsSrc[k];
+
     sounds[k].load();
   }
 }
@@ -46,14 +48,14 @@ sounds.music.addEventListener('ended', function() {
 
 function Sound(name) {
   this.sound = sounds[name];
-  this.sound.pause();
+  
+ //  this.sound.pause();
   this.sound.currentTime = 0;
   this.sound.play();
 }
 
 function playSound(name) {
   var newSound;
-  if (isSound)
-    newSound = new Sound(name);
+   if (isSound) newSound = new Sound(name);
 }
 

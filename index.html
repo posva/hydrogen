@@ -15,9 +15,167 @@
     <canvas id="canvas_hud" width="880" height="440"></canvas>
   </div>
 
-  <div style="font-family:HelveticaLight"></div>
+  <div style="font-family:'HelveticaLight';position:absolute;">&nbsp;</div>
   
   <div id="tobotornottobot"></div>
+  
+  <div id="menucache">
+  <div id="menu" class="showlevels">
+    <div id="main" class="screen">
+      
+    </div>
+    <div id="cats" class="screen">
+      <div class="wrap">
+        <div class="cat">
+          <h2>Nucléosynthèse<br/>primaire</h2>
+          <div class="descr">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vulputate dolor id rhoncus tempus. Nullam vitae pellentesque dui. Aenean non posuere tellus. Nullam rutrum id augue et interdum.</div>
+        </div>
+        <div class="cat">
+          <h2>Nucléosynthèse<br/>stellaire</h2>
+          <div class="descr">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vulputate dolor id rhoncus tempus. Nullam vitae pellentesque dui. Aenean non posuere tellus. Nullam rutrum id augue et interdum.</div>
+        </div>
+        <div class="cat">
+          <h2>Nucléosynthèse<br/>explosive</h2>
+          <div class="descr">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vulputate dolor id rhoncus tempus. Nullam vitae pellentesque dui. Aenean non posuere tellus. Nullam rutrum id augue et interdum.</div>
+        </div>
+      </div>
+    </div>
+    <div id="levels" class="screen">
+      <div class="wrap">
+        
+        <div class="level showtabquestions" id="levelcuivre">
+          <div class="in">
+            <div class="picto">
+              <span class="letters">Cu</span>
+              <span class="number">28</span>
+            </div>
+            
+            <h2>Cuivre</h2>
+            
+            <div class="playit" data-element="2">Play!</div>
+            
+              <div class="switch">
+               <div class="active" data-id="questions">QUESTIONS</div>
+               <div data-id="anecdotes">ANECDOTES</div>
+               <div data-id="achievements">ACHIEVEMENTS</div>
+              </div>
+            
+            <div class="questions">
+              
+              <div class="question">
+                <div class="note">
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                </div>
+                <div class="q">What is the atomic nucleus made of? 
+</div>
+              </div>
+              <div class="question">
+                <div class="note">
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                </div>
+                <div class="q"></div>
+              </div>
+              <div class="question">
+                <div class="note">
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                </div>
+                <div class="q"></div>
+              </div>
+              <div class="question">
+                <div class="note">
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                </div>
+                <div class="q"></div>
+              </div>
+              <div class="question">
+                <div class="note">
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                </div>
+                <div class="q"></div>
+              </div>
+            </div>
+            
+            
+            
+            <div class="achievements">
+              <div class="badge"></div>
+              <div class="badge disable"></div>
+              <div class="badge disable"></div>
+              <div class="badge disable"></div>
+              <div class="badge disable"></div>
+            </div>
+            
+          </div>
+        </div>
+        
+        
+        
+        <div class="level" id="levelazote">
+          <div class="in">
+            <div class="picto">
+              <span class="letters">N</span>
+              <span class="number">7</span>
+            </div>
+            
+            <h2>Azote</h2>
+            
+            <div class="playit" data-element="1">Play!</div>
+            
+              <div class="switch">
+               <div class="active" data-id="questions">QUESTIONS</div>
+               <div data-id="anecdotes">ANECDOTES</div>
+               <div data-id="achievements">ACHIEVEMENTS</div>
+              </div>
+            
+            <div class="questions">
+              <div class="question">
+                
+                <div class="note">
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                </div>
+                <div class="q">What is the atomic nucleus made of? 
+</div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="level disable">
+          <div class="picto">
+            <span class="letters">Mg</span>
+            <span class="number">84</span>
+          </div>
+          
+          <h2>Magnésium</h2>
+        </div>
+        
+        <div class="level disable">
+          <div class="picto">
+            <span class="letters">H</span>
+            <span class="number">1</span>
+          </div>
+          
+          <h2>Hydrogen</h2>
+          
+        </div>
+        
+      </div>
+    </div>
+    </div>
+  </div>
 
   <script src="jquery.js"></script>
   <script src="hammer.min.js"></script>

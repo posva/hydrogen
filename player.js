@@ -100,17 +100,17 @@ function Player(state) {
 
               if (currentElement == 1) {
                 P.goUp();
-                setTimeout(function(){ P.goUp(); },30);
+                setTimeout(function(){ P.goUp(); },100);
               }
               
               if (currentElement == 2) {
                 P.goDown();
-                setTimeout(function(){ P.goDown(); },30);
+                setTimeout(function(){ P.goDown(); },100);
               }
               
               if (currentElement == 3) {
                 P.goUp();
-                setTimeout(function(){ P.goUp(); },30);
+                setTimeout(function(){ P.goUp(); },100);
               }
 
             }
@@ -124,7 +124,7 @@ function Player(state) {
 
               if (currentElement == 1) {
                 P.goUp();
-                setTimeout(function(){ P.goUp(); },30);
+                setTimeout(function(){ P.goUp(); },100);
               }
               
               if (currentElement == 2) {
@@ -134,7 +134,7 @@ function Player(state) {
               
               if (currentElement == 3) {
                 P.goDown();
-                setTimeout(function(){ P.goDown(); },30);
+                setTimeout(function(){ P.goDown(); },100);
               }
             }
 
@@ -293,7 +293,7 @@ function Player(state) {
     this.energy += energyEarned;
     
     if (this.energy >= json.elements[currentElement].maxEnergy)
-      nextElementForDemo()
+      nextElementForDemo();
   }
 
 

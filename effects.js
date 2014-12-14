@@ -8,6 +8,7 @@ function MoveWorldForLiquid() {
   this.maxTime = 10;
   this.y = 0;
   this.maxY = -10;
+  this.canvasMyOriginal = canvasMy;
 
   this.draw = function() {
     if (canvasMy > this.maxY) {
@@ -220,6 +221,33 @@ function BlackScreen() {
     canvasF.restore();
 
 
+  }
+
+  this.remove = function(){
+    effectsVIP.splice(effectsVIP.indexOf(this),1);
+  }
+}
+
+
+
+
+
+
+function BigPicto() {
+  this.opacity = 1;
+  this.img = img[currentElement].bigPicto;
+
+  this.draw = function() {
+    this.opacity -= .05;
+
+    canvasF.save();
+    canvasF.translate(GAME_W-60,50);
+    canvasF.globalAlpha = this.opacity;
+    canvasF.scale(this.opacity, this.opacity);
+    canvasF.drawImage(this.img,-250/2,-250/2);
+    canvasF.restore();
+
+    if (this.opacity <= 0) this.remove();
   }
 
   this.remove = function(){

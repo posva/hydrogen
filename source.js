@@ -1,75 +1,11 @@
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 
 
-$(function(){
-var HEIGHT = $(window).height();
-
-  $.ajax({
-    url: "data.json",
-    dataType: "text",
-    success: function(data) {
-      json = $.parseJSON(data);
-      loadJSON();
-      debug('loaded');
-      checkAndStart();
-    }
-  });
-
-  document.body.addEventListener('touchstart', function(e){ e.preventDefault(); });
-
-  var hammertime = new Hammer(document.getElementsByTagName('html')[0], {});
-
-
-  hammertime.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
-
-  hammertime.on('swipedown', function(ev) {
-   if (Game.isGameOver) {
-     Game.newGame();
-   } else { P.goDown(); }
-
-  });
-
-
-  hammertime.on('swipeup', function(ev) {
-   if (Game.isGameOver) {
-     Game.newGame();
-    } else {
-    P.goUp();
-    }
-  });
-
-
-  hammertime.on('tap', function(ev) {
-
-   if (Game.isGameOver) {
-     Game.newGame();
-    } else {
-
-     if (ev.center.y >= HEIGHT/2) {
-       P.goDown();
-     }
-     else {
-       P.goUp();
-     }
-   }
-  });
-
-
-
-  var toBotOrNotToBot = new Hammer(document.getElementById('tobotornottobot'), {});
-
-
-
-  toBotOrNotToBot.on('tap', function(ev) {
-
-   BOT = !BOT;
-
-  });
-
-});
 
 var DEBUG = false;
 var BOT = false;
+
+var isSound = true;
 
 var Game;
 
@@ -92,8 +28,6 @@ mancheStep = 0,
 mancheEtape,
 speed = 0,
 speedX = 0;
-
-var isSound = true;
 
 var LIQUID = 0,
 SOLID = 1,
@@ -186,6 +120,7 @@ function loadJSON() {
     img[i].nuage                 = newImage("img/"+json.elements[i].id+"/nuage.png");
     img[i].front                 = newImage("img/"+json.elements[i].id+"/front.png");
     img[i].picto                 = newImage("img/"+json.elements[i].id+"/picto.png");
+    img[i].bigPicto                 = newImage("img/"+json.elements[i].id+"/bigpicto.png");
     img[i].HUDbackgroundtopright = newImage("img/"+json.elements[i].id+"/hud_background_topright.png");
 
     img[i].obstacles = new Array();
@@ -287,5 +222,115 @@ function nextElementForDemo() {
     decorBackgroundFront 	= new ImgLoop(canvasB, img[currentElement].decorBackgroundFront, 0, 205, -10, 0);
     nuage 					      = new ImgLoop(canvasM, img[currentElement].nuage, 0, -10, -7, 0);
     front 					      = new ImgLoop(canvasF, img[currentElement].front, 0, 335, -10, 0);
-
+    
+    addEffectVIP(new BigPicto());
 }
+
+function initElement(ce) {
+
+
+    if (ce == 4) ce = 1;
+
+    if (ce == 1) $('html, body').css('background-image','url(img/pattern_azote.png)');
+    if (ce == 2) $('html, body').css('background-image','url(img/pattern_cuivre.png)');
+    if (ce == 3) $('html, body').css('background-image','url(img/pattern_mercure.png)');
+
+    decorBackground 		= new ImgLoop(canvasB, img[ce].decorBackground, 0, -10, -1, 0);
+    decorBackgroundFront 	= new ImgLoop(canvasB, img[ce].decorBackgroundFront, 0, 205, -10, 0);
+    nuage 					      = new ImgLoop(canvasM, img[ce].nuage, 0, -10, -7, 0);
+    front 					      = new ImgLoop(canvasF, img[ce].front, 0, 335, -10, 0);
+    
+    currentElement = ce;
+    
+    addEffectVIP(new BigPicto());
+    
+    return ce;
+}
+
+
+
+
+$(function(){
+var HEIGHT = $(window).height();
+
+  $.ajax({
+    url: "data.json",
+    dataType: "text",
+    success: function(data) {
+      json = $.parseJSON(data);
+      loadJSON();
+      debug('loaded');
+      checkAndStart();
+    }
+  });
+
+  document.body.addEventListener('touchstart', function(e){ e.preventDefault(); });
+
+  var hammertime = new Hammer(document.getElementsByTagName('html')[0], {});
+
+
+  hammertime.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
+
+  hammertime.on('swipedown', function(ev) {
+   if (Game.isGameOver) {
+     Game.newGame();
+   } else { P.goDown(); }
+
+  });
+
+
+  hammertime.on('swipeup', function(ev) {
+   if (Game.isGameOver) {
+     Game.newGame();
+    } else {
+    P.goUp();
+    }
+  });
+
+
+  hammertime.on('tap', function(ev) {
+
+   if (Game.isGameOver) {
+     Game.newGame();
+    } else {
+
+     if (ev.center.y >= HEIGHT/2) {
+       P.goDown();
+     }
+     else {
+       P.goUp();
+     }
+   }
+  });
+
+
+
+  var toBotOrNotToBot = new Hammer(document.getElementById('tobotornottobot'), {});
+
+
+
+  toBotOrNotToBot.on('tap', function(ev) {
+
+   BOT = !BOT;
+
+  });
+
+
+
+
+  $('.switch div').on('click',function(){
+    var level = $(this).closest('.level');
+    
+    level.removeClass('showtabquestions showtabachievements showtabanecdotes').addClass('showtab'+$(this).data('id'));
+    level.find('.switch div').removeClass('active');
+    $(this).addClass('active');
+  });
+  
+  
+  $('.playit').on('click',function(){
+    console.log(parseInt($(this).data('element')));
+    initElement(parseInt($(this).data('element')));
+    Game.newGame();
+  });
+
+});
